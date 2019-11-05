@@ -7,7 +7,7 @@ int main()
    
    //1、需要头文件 #include <stdlib.h>
    //2、system功能: 调用外部程序   
-   system("ls -alh");
+   system("./waibu");
 
    printf("after sys\n");
 
