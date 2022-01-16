@@ -13,5 +13,6 @@ int main(){
   printf("%d\n", num);
   num = (6 - num % 10) * 10000 + num / 10;
   printf("%d\n", num);
+  num = (6 - num % 10) * 10000 + num / 10;
   return 0;
 }
