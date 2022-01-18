@@ -10,5 +10,6 @@ int main(){
    printf("%3d\n", 7);
    printf("%-3dabc\n", 7);
    printf("%03d\n", 7);
+   printf("%7.2f\n", 1.2f);
    return  0;
 }
