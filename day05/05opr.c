@@ -3,7 +3,7 @@
  */
 #include <stdio.h>
 int main(){
-  int num = 0;
+  int num = 0, num1 = 0;
   num++;
   printf("num是%d\n", num);
   num--;
@@ -13,5 +13,7 @@ int main(){
   printf("num是%d\n", num);
   --num;
   printf("num是%d\n", num);
+  num1 = num++;
+  printf("num是%d,num1是%d\n", num, num1);
   return 0;
 }
