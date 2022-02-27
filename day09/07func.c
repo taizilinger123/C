@@ -9,5 +9,7 @@ int main(){
    int num = 0;
    num = add(2, 3);
    printf("num是%d\n", num);
+   num = add(num, 4);
+   printf("num是%d\n", num);
    return 0;
 }
