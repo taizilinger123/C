@@ -17,3 +17,5 @@ int main(){
    printf("求和结果是%d\n", sum(num));
    return 0;
 }
+
+//思路：num=1,2,3
