@@ -10,5 +10,10 @@ int main(){
   p_str = strcat(str, "def");
   printf("str是%p,p_str是%p\n", str, p_str);
   printf("合并结果是%s\n", p_str);
+  printf("比较结果是%d\n", strcmp("abc","abd"));
+  printf("比较结果是%d\n", strncmp("abc","abd", 2));
+  p_str = strcpy(str, "xyz");
+  printf("str是%p,p_str是%p\n", str, p_str);
+  printf("拷贝后字符串是%s\n", p_str);
   return 0;
 }
