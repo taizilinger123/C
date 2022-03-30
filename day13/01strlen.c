@@ -15,6 +15,7 @@ int mystrlen(const char *p_str){
 	return p_str1 - p_str;
 }
 int main(){
+   //一定要保证字符串以\0结尾的,不然就会发生数组越界
    printf("长度是%d\n", mystrlen("abcde"));
    return 0;
 }
