@@ -3,7 +3,19 @@
  */
 #include <stdio.h>
 char *mystrcat(char *p_str, const char *p_str1){
-    char *p_str2 = p_str;
+	int pos = 0;
+	int pos1 = 0;
+	while(p_str[pos]){
+	    pos++;
+	}
+	while(p_str1[pos1]){
+	    p_str[pos] = p_str1[pos1];
+		pos++;
+		pos1++;
+	}
+	p_str[pos] = 0;
+	return p_str;
+    /*char *p_str2 = p_str;
 	const char *p_str3 = p_str1;
 	while(*p_str2){
 	   p_str2++;
@@ -14,7 +26,7 @@ char *mystrcat(char *p_str, const char *p_str1){
 	   p_str3++;
 	}
 	*p_str2 = 0;
-	return p_str;
+	return p_str;*/
 }
 int main(){
   char buf[10] = "abc";
