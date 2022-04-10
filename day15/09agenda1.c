@@ -3,7 +3,10 @@
  */
 #include <stdio.h>
 #include <string.h>
-#include "09agenda.h"
+typedef struct {
+   int time;
+   char buf[20];
+} item;
 item *read(item *p_item){
    printf("请输入时间: ");
    scanf("%d", &(p_item->time));
@@ -20,4 +23,17 @@ item *read(item *p_item){
 void write(const item *p_item){
    printf("时间是%d\n", p_item->time);
    printf("内容是%s\n", p_item->buf);
+}
+int main(){
+   int num = 0, pos = 0; 
+   printf("请输入日程个数: ");
+   scanf("%d", &num);
+   item items[num];
+   for(pos = 0;pos <= num - 1;pos++){
+	    read(items + pos);
+   }
+   for(pos = 0;pos <= num - 1;pos++){
+		write(items + pos);
+   }
+   return 0;
 }
