@@ -16,9 +16,13 @@ int comp(const void *p_num1, const void *p_num2){
      return 0;
    }
 }
+int comp1(const void *p_num1, const void *p_num2){
+    return 0 - comp(p_num1, p_num2);
+}
 int main(){
    int num[] = {6, 3, 9, 17, 2, 8, 4}, pos = 0;
-   qsort(num, 7, sizeof(int), comp);
+   //qsort(num, 7, sizeof(int), comp);
+   qsort(num, 7, sizeof(int), comp1);
    for(pos = 0;pos <= 6;pos++){
      printf("%d ", num[pos]);
    }
