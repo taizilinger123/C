@@ -24,6 +24,29 @@ void queue_deinit(QUEUE* queue){//释放内存
 int queue_empty(QUEUE* queue){//判断空
    return (!queue->front) && (!queue->rear);
 }
-void queue_push(QUEUE* queue,int data){
-    
+void queue_push(QUEUE* queue,int data){//压入
+   QUEUE_NODE* rear = create_node(data);
+   if(queue->rear)//尾节点非空，有队首
+	 queue->rear->next = rear;//改原来队尾next
+   else//空队列
+	 queue->front = rear;//队首就是新元素
+   queue->rear = rear;//设定新的尾节点
 }
+int queue_pop(QUEUE* queue){//弹出
+   int data = queue->front->data;
+   queue->front = destroy_node(queue->front);
+   if(queue->front == NULL) queue->rear=NULL;
+   return data;
+}
+int queue_front(QUEUE* queue){//查看队首
+   return queue->front->data;
+}
+size_t queue_size(QUEUE* queue){//元素个数
+   size_t size = 0;
+   QUEUE_NODE* node = NULL;
+   for(node=queue->front;node;node=node->next){
+      size++;
+   return size;
+   }
+}
+//gcc  -c  ql.c
