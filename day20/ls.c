@@ -21,6 +21,38 @@ void list_init(LIST* list){//初始化List
 void list_deinit(LIST* list){//释放并恢复
     while(list->head){
 	   list->head = destroy_node(list->head,0);
-	   list->tail = NULL;
+    list->tail = NULL;
+}
+int list_empty(LIST* list){//判断空
+    return !list->head && !list->tail;
+}
+void list_append(LIST* list,int data){//追加
+    list->tail=create_node(data,list->tail,0);
+	if(list->tail->prev)//不是首节点
+		list->tail->prev->next = list->tail;
+	else list->head = list->tail;//首节点
+}
+int list_insert(LIST* list,size_t pos,int data){//前插，返回1代表成功，0失败
+    LIST_NODE* find = NULL;
+    for(find=list->head;find;find=find->next){
+	   if(! pos--){//到了插入的位置
+	     LIST_NODE* node=create_node(data,find->prev,find);
+		 if(node->prev)
+			 node->prev->next = node;
+		 else list->head = node;
+		 node->next->prev = node;//后节点的前节点
+		 return 1;
+	   }
 	}
+	return 0;
+}
+int* list_at(LIST* list,size_t pos){//随机访问
+    LIST_NODE* find = NULL;
+	for(find=list->head;find;find=find->next){
+	   if(! pos--) return &find->data;
+	}
+	return NULL;
+}
+
+
 }
