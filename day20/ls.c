@@ -53,6 +53,33 @@ int* list_at(LIST* list,size_t pos){//随机访问
 	}
 	return NULL;
 }
-
+int list_erase(LIST* list,size_t pos){
+    LIST_NODE* find = NULL;
+	for(find=list->head;find;find=find->next){
+	   if(! pos--){
+	        LIST_NODE* prev = NULL;
+			LIST_NODE* next = destroy_node(find,&prev);
+			if(prev) prev->next = next;//非  首节点
+			else list->head = next;//首节点
+			if(next) next->prev = prev;//非  尾节点
+			else list->tail = prev;//尾节点
+			return 1;
+	   }
+	}
+	return 0;
+}//按位置删除
+void list_remove(LIST* list,int data){
+   LIST_NODE* find=NULL;
+   for(find=list->head;find;find=find->next){
+	  if(find->data == data){//被删除的节点
+	      LIST_NODE* prev = NULL;
+		  LIST_NODE* next = destroy(find,&prev);
+          if(prev) prev->next = next;
+		  else list->head = next;
+		  if(next) next->prev = prev;
+		  else list->tail = prev;
+	  }
+   }
+}//按数据删除
 
 }

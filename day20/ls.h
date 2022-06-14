@@ -20,4 +20,13 @@ void list_append(LIST* list,int data);//追加
 int  list_insert(LIST* list,size_t pos,int data);//在位置pos之前插入
 int* list_at(LIST* list,size_t pos);//随机访问
 int  list_erase(LIST* list,size_t pos);//删除
+void list_remove(LIST* list,int data);//删除
+void list_clear(LIST* list);//全部删除
+size_t list_size(LIST* list);//元素个数
+/*正向迭代函数*/
+void list_begin(LIST* list);//开始
+int* list_next(LIST* list);//取下一个
+int* list_prev(LIST* list);//取上一个
+int* list_current(LIST* list);//取当前数据
+int list_end(LIST* list);//判断迭代结束
 #endif
