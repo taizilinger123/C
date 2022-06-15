@@ -91,4 +91,27 @@ size_t list_size(LIST* list){
 	   size++;
    return size;
 }
+void list_begin(LIST* list){
+   list->frwd = list->head;
+}
+int* list_next(LIST* list){//取数据并后移
+   int* data = &(list->frwd->data);
+   list->frwd = list->frwd->next;//移动到下一个
+   return data;
+}
+int* list_prev(LIST* list){//取数据并前移
+   int* data = &(list->frwd->data);
+   list->frwd = list->frwd->prev;//移动到上一个
+   return data;
+}
+int* list_current(LIST* list){//只取数据不移
+   return &(list->frwd->data);
+}
+int list_end(LIST* list){
+   return ! list->frwd;
+}
+
+
+
+
 
