@@ -19,7 +19,7 @@ void list_init(LIST* list){//初始化List
 	list->tail = NULL;
 }
 void list_deinit(LIST* list){//释放并恢复
-    while(list->head){
+    while(list->head)
 	   list->head = destroy_node(list->head,0);
     list->tail = NULL;
 }
@@ -73,7 +73,7 @@ void list_remove(LIST* list,int data){
    for(find=list->head;find;find=find->next){
 	  if(find->data == data){//被删除的节点
 	      LIST_NODE* prev = NULL;
-		  LIST_NODE* next = destroy(find,&prev);
+		  LIST_NODE* next = destroy_node(find,&prev);
           if(prev) prev->next = next;
 		  else list->head = next;
 		  if(next) next->prev = prev;
@@ -81,5 +81,14 @@ void list_remove(LIST* list,int data){
 	  }
    }
 }//按数据删除
-
+void list_clear(LIST* list){//清空
+  list_deinit(list);
 }
+size_t list_size(LIST* list){
+   size_t size = 0;
+   LIST_NODE* find = NULL;
+   for(find=list->head;find;find=find->next)
+	   size++;
+   return size;
+}
+
