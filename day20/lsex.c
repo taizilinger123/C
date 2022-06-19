@@ -50,3 +50,13 @@ void list_print(LIST* list){
 		printf("%d ",node->data);
 	printf("\n");
 }
+void rprint(LIST_NODE* head){
+    if(head){//head==NULL退出
+	   rprint(head->next);//反向打印下一个节点
+	   printf("%d ",head->data);
+	}
+}
+void list_rprint(LIST* list){//反向打印函数
+    rprint(list->head);//递归函数
+	printf("\n");
+}
