@@ -60,3 +60,20 @@ void list_rprint(LIST* list){//反向打印函数
     rprint(list->head);//递归函数
 	printf("\n");
 }
+
+int main(){
+   LIST list;
+   list_init(&list);
+   int i;
+   for(i=1;i<6;i++) 
+       list_append(&list,i);
+   list_rprint(&list);
+   list_deinit(&list);
+}
+
+
+/*
+ root@test:/home/test/biaoc/C/day20# gcc lsex.c
+ root@test:/home/test/biaoc/C/day20# ./a.out 
+ 5 4 3 2 1 
+ */
