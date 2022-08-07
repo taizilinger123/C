@@ -34,7 +34,26 @@ static void insert(BSTREE_NODE* node, BSTREE_NODE** root){
 		  insert(node,&(*root)->right);
    }
 }
+static BSTREE_NODE** find(int data, BSTREE_NODE** root){
+    if(! *root) 
+		return root;
+	else if(data == (*root)->data) 
+		return root;
+	else if(data < (*root)->data)
+		return find(data,&(*root)->left);
+	else 
+		return find(data,&(*root)->right);
+}
 /*************************/
+int bstree_erase(BSTREE* bstree,int data){
+   //1 找到，用递归函数
+   BSTREE_NODE** node = find(data,&bstree->root);
+   if(*node){
+   
+	   return 1;
+   }
+   return 0;
+}
 void bstree_deinit(BSTREE* bstree){//释放恢复
    clear(&bstree->root);//用二级指针
    bstree->size = 0;
@@ -43,3 +62,4 @@ void bstree_insert(BSTREE* bstree,int data){
     insert(create_node(data),&bstree->root);
 	bstree->size++;
 }
+
