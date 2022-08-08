@@ -49,10 +49,27 @@ int bstree_erase(BSTREE* bstree,int data){
    //1 找到，用递归函数
    BSTREE_NODE** node = find(data,&bstree->root);
    if(*node){
-   
+	   //左子树插入右子树
+       insert((*node)->left,&(*node)->right);
+	   //切换位置
+	   BSTREE_NODE* temp = *node;
+	   *node = (*node)->right;
+	   destroy_node(temp);//删除
+	   --bstree->size;
 	   return 1;
    }
    return 0;
+}
+void bstree_clear(BSTREE* bstree){
+   bstree_deinit(bstree);
+}
+void bstree_update(BSTREE* bstree,int old,int new){
+   while(bstree_erase(bstree,old)){
+      bstree_insert(bstree,new);
+   }//保证结果依然是 有序二叉树
+}
+int bstree_exist(BSTREE* bstree,int data){
+   return *find(data,&bstree->root) != NULL;
 }
 void bstree_deinit(BSTREE* bstree){//释放恢复
    clear(&bstree->root);//用二级指针
