@@ -43,8 +43,19 @@ static BSTREE_NODE** find(int data, BSTREE_NODE** root){
 		return find(data,&(*root)->left);
 	else 
 		return find(data,&(*root)->right);
+}//返回是数据父节点 left/right的地址 
+static void travel(BSTREE_NODE* root){
+   if(root){
+      travel(root->left);//左子树
+	  printf("%d ",root->data);//打印自己
+	  travel(root->right);//右子树
+   }
 }
 /*************************/
+void bstree_travel(BSTREE* bstree){//中序遍历
+   travel(bstree->root);
+   printf("\n");
+}
 int bstree_erase(BSTREE* bstree,int data){
    //1 找到，用递归函数
    BSTREE_NODE** node = find(data,&bstree->root);
@@ -70,6 +81,9 @@ void bstree_update(BSTREE* bstree,int old,int new){
 }
 int bstree_exist(BSTREE* bstree,int data){
    return *find(data,&bstree->root) != NULL;
+}
+size_t bstree_size(BSTREE* bstree){
+   return bstree->size;
 }
 void bstree_deinit(BSTREE* bstree){//释放恢复
    clear(&bstree->root);//用二级指针
