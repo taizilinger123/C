@@ -51,7 +51,18 @@ static void travel(BSTREE_NODE* root){
 	  travel(root->right);//右子树
    }
 }
+static size_t height(BSTREE_NODE* root){
+   if(root){
+      size_t lh = height(root->left);
+	  size_t rh = height(root->right);
+	  return ((lh>rh)?lh:rh)+1;
+   }
+   return 0;
+}
 /*************************/
+size_t bstree_height(BSTREE* bstree){//高度
+   return height(bstree->root);
+}
 void bstree_travel(BSTREE* bstree){//中序遍历
    travel(bstree->root);
    printf("\n");
