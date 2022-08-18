@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-void bubble(int data[],size_t size){
+
+void bubble(int data[],size_t size){//冒泡排序
   int i;
   for(i=0;i<size-1;i++){//n个数  n-1轮即可
       int flag = 1;//标识 是否发生过交换
