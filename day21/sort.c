@@ -32,9 +32,9 @@ void sel(int data[],size_t size){//选择排序
     //练习:实现选择排序，思路:记录最小数据下标
     int i;
 	for(i=0;i<size-1;i++){//选择排序交换位置
-	  int min = i;
+	  int min = i;//min代表 最小值的下标
 	  int j;
-	  for(j=i+1;j<size;j++){
+	  for(j=i+1;j<size;j++){//循环拿到最小值下标
 	     if(data[j]<data[min]) min = j;
 	  }
 	  if(min!=i){//找到比data[i]小的了，交换
