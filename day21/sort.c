@@ -17,7 +17,7 @@ void bubble(int data[],size_t size){//冒泡排序
 	  if(flag) break;//没有发生交换，不进行下趟
   }
 }
-void insert(int data[],size_t size){
+void insert(int data[],size_t size){//插入排序
   int i;
   for(i=1;i<size;i++){//从第二个到最后一个插入
      int inserted = data[i];//先保存
@@ -28,10 +28,27 @@ void insert(int data[],size_t size){
 	 if(j!=i) data[j] = inserted;//如果移动了
   }
 }
+void sel(int data[],size_t size){//选择排序
+    //练习:实现选择排序，思路:记录最小数据下标
+    int i;
+	for(i=0;i<size-1;i++){//选择排序交换位置
+	  int min = i;
+	  int j;
+	  for(j=i+1;j<size;j++){
+	     if(data[j]<data[min]) min = j;
+	  }
+	  if(min!=i){//找到比data[i]小的了，交换
+	     int temp = data[i];
+		 data[i] = data[min];
+		 data[min] = temp;
+	  }
+	}
+}
 int main(){
    int data[] = {9,7,2,4,5,8,1,3,6};
    //bubble(data,sizeof(data)/sizeof(data[0]));
-   insert(data,sizeof(data)/sizeof(data[0]));
+   //insert(data,sizeof(data)/sizeof(data[0]));
+   sel(data,sizeof(data)/sizeof(data[0]));
    int i;
    for(i=0;i<sizeof(data)/sizeof(data[0]);i++){
       printf("%d\n",data[i]);
