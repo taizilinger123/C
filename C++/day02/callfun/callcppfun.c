@@ -23,6 +23,6 @@ int main(){
  a.out  callcppfun.c  mymath.cpp  mymath.h  mymath.o
  root@test:/home/test/biaoc/C/C++/day02/callfun# ./a.out 
  98
-    如果用c++实现一个函数  需要在实现中加一个extern  "C" 然后提供一个供c调用的头文件
-	      如果用c实现一个函数  但需要给c++提供一个调用的头文件 这个头文件中需要加一个extern  "C"声明。
+       如果用c++实现一个函数  供c调用  需要在实现中加一个extern  "C" 然后提供一个供c调用的头文件
+	         如果用c实现一个函数供c++调用  但需要给c++提供一个调用的头文件 这个头文件中需要加一个extern  "C"声明。
  */
