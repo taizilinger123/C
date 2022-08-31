@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 #include "mymath.h"
-/*_Z3addii */
+/*_Z3addii 加extern "C"后找的是add*/
 int main(){
     cout<<add(1,97)<<endl;
 }
