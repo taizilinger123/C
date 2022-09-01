@@ -13,4 +13,10 @@ int main(){
   }
   delete[] parr;
   parr=NULL;
+  /*申请100个字节 */
+  char buf[100]={0};
+  /*定位分配的内存不用我们释放*/
+  int *pa=new(buf)int[25];
+  cout<<(void*)buf<<endl;
+  cout<<pa<<endl;
 }
