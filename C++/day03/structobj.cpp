@@ -23,4 +23,14 @@ int main(){
    //date.year=2013;
    date.setDate();
    date.showDate();
+   date.setDate(2013,11,11);
+   date.showDate();
+   /*在堆中创建对象*/
+   Date *date2=new Date;
+   date2->setDate();
+   date2->showDate();
+   delete date2;
+   date2=NULL;
+   /*使用malloc申请一个Date类型的对象空间
+	 给这个空间设置值 显示这个对象的数据*/
 }
