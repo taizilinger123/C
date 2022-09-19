@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <iomanip>
 #include <unistd.h>
+#include <ctime>
 //man 3 sleep
 //man 5 sleep
 using namespace std;
@@ -25,7 +26,10 @@ class MyTime{
 	}
 	/*调用一次 时间向前走一秒*/
     void dida(){
-	   sleep(1);
+	   //sleep(1);
+	   /*获得当前时间 时间发生变化就走一秒*/
+	   time_t t=time(NULL);
+	   while(t==time(NULL));
 	   if(++sec==60){
 	     sec=0;
 		 if(++min==60){
