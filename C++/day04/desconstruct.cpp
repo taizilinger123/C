@@ -19,6 +19,7 @@ class A{
 };
 void testA(){
    A  a;
+   //A  b=a;
    //重复释放内存
    a.~A();
    /*A  *b=new  A();
