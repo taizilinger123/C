@@ -23,5 +23,7 @@ int main(){
    mptr=&Date::month;
    cout<<date.*mptr<<endl;
    cout<<"mptr="<<myptr<<endl;
-
+   mptr=&Date::day;
+   cout<<date.*mptr<<endl;
+   cout<<"mptr="<<myptr<<endl;
 }
