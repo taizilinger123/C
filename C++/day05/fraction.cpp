@@ -12,9 +12,10 @@ class Fraction{
 	   cout<<x<<"/"<<y<<endl;
 	}
 	/*成员函数 两个分数相加*/
+	//a/b+x/y=(a*y+b*x)/b*y 
     Fraction add(const Fraction& f/*这是引用用的const*/){
         Fraction temp;
-		temp.x=this->x*f.y+this->y*f.x;
+		temp.x=this->x*f.y+this->y*f.x;//a=f.x  b=f.y 
 		temp.y=this->y*f.y;
 		return temp;
 	}
