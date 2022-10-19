@@ -12,10 +12,13 @@ class Fraction{
 	   cout<<x<<"/"<<y<<endl;
 	}
 	/*成员函数 两个分数相加*/
-	//a/b+x/y=(a*y+b*x)/b*y 
+	//a/b+x/y=(a*y+b*x)/b*y
+	//令a=f.x,b=f.y
+	//temp.x=this->x*f.y+this->y*f.x=x*f.y+y*f.x=x*b+y*a;
+	//temp.y=this->y*f.y=y*f.y=y*b;
     Fraction add(const Fraction& f/*这是引用用的const*/){
         Fraction temp;
-		temp.x=this->x*f.y+this->y*f.x;//a=f.x  b=f.y 
+		temp.x=this->x*f.y+this->y*f.x;//a=f.x  b=f.y,这里这么写的意思是因为前面有show函数x/y,这里就用temp.x代替x,temp.y代替y 
 		temp.y=this->y*f.y;
 		return temp;
 	}
