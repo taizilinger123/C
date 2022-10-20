@@ -7,6 +7,7 @@ class Fraction{
 	Fraction(int x=0,int y=1):x(x),y(y){
 	
 	}
+	/*friend 就是能访问类私有成员的全局函数*/
 	friend ostream& operator<<(ostream& os,const Fraction& f);//友元，这里用友元的目的是为了访问类Fraction内的私有成员x,y,友元也是全局函数的一种,必须在类内使用友元,const也是在类内使用的
 
 };
