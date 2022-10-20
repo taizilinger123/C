@@ -30,6 +30,11 @@ class Fraction{
 		temp.y=this->y*f.y;
 		return temp;
 	}
+	/*成员形式减号运算符 f1-f2*/
+	Fraction operator-(Fraction F){
+	   return Fraction(this->x*f.y-this->y*f.x,this->y*f.y);
+	}
+    	
 };
 /*在全局区设计一个运算符函数 */
 Fraction  operator+(const Fraction& f1, const Fraction& f2){
