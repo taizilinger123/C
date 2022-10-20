@@ -17,5 +17,5 @@ ostream& operator<<(ostream& os,const Fraction& f){
 }
 int main(){
 	Fraction  f(1,3);
-	cout<<f;//cout.operator<<(Fraction f)
+	cout<<f<<endl;//cout.operator<<(Fraction f)
 }
