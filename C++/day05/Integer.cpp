@@ -34,7 +34,7 @@ class Integer{
       return data>i.data;
    }
 
-   friend ostream& operator<<(ostream& os, const Integer& i){
+   friend ostream& operator<<(ostream& os, const Integer& i){//const Integer& i这里的const是输出临时变量的
        return os<<i.data;
    }
    friend istream& operator>>(istream& is, Integer& i){
