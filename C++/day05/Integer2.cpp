@@ -10,6 +10,19 @@ class Integer{
    const Integer  operator-()const{
       return Integer(-data);
    }
+   /* !运算符重载 */
+   const Integer operator!()const{
+      return Integer(!data);
+   }
+   /* ++i 前++运算符重载 变量的值和表达式的值一致 */
+   Integer&   operator++(){
+      ++data;
+	  return *this;
+   }      
+   /* 后++ 用哑元分区 表达式的值和变量原来的值一致 */
+   Integer   operator++(int){
+      return Integer(data++);
+   }      
    friend ostream&  operator<<(ostream& os, const Integer& i){
       return os<<i.data;
    }
@@ -23,8 +36,15 @@ class Integer{
 };
 int main(){
    Integer i;
+   cout<<++i<<endl;
+   cout<<i<<endl;
+   cout<<i++<<endl;
+   cout<<i<<endl;
+   cout<<"-----------"<<endl;
    cin>>i;
    cout<<-i<<endl;
    //i+=100;
    cout<<i<<endl;
+   cout<<!i<<endl;
+   cout<<!!i<<endl;
 }
