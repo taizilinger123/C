@@ -49,7 +49,8 @@ class Array{
 		return data[ind];
 	}
     /*提供一个函数 放入数据*/
-	Array& push_back(int d){
+	//Array& push_back(int d){
+	  Array& operator>>(int d){
 	    if(size+1<=maxsize){
 		   data[size++]=d;
 		}else{
@@ -60,14 +61,17 @@ class Array{
 };
 int main(){
     Array  a(5);
-	a.push_back(100);
-	a.push_back(300).push_back(200).push_back(2).push_back(3);
+	/*a.push_back(100);
+	a.push_back(300).push_back(200).push_back(2).push_back(3);*/
+	a>>100;
+	a>>300>>200>>2>>3;
 	/*
 	 terminate called after throwing an instance of 'char const*'
 	 已放弃 (核心已转储)
 	 */
     try{
-	   a.push_back(555);
+	   //a.push_back(555);
+	   a>>555;
 	}catch(const char* e){
 	   cout<<e<<endl;
 	}
