@@ -75,6 +75,7 @@ int main(){
 	}catch(const char* e){
 	   cout<<e<<endl;
 	}
+	a[1]=900;
 	cout<<a[1]<<endl;
 	Array  b(2);
 	//b=a;
