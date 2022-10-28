@@ -25,10 +25,15 @@ class autoptr{
    A* operator->(){
      return data;
    }
+   /*重载* 运算符*/
+   A& operator*(){
+      return *data;
+   }
 };
 int main(){
    A*  a=new A();
    autoptr atr(a);
    atr->show();
    atr.operator->()->show();
+   (*atr).show();
 }
