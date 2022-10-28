@@ -16,7 +16,7 @@ class Array{
 	~Array(){
 	    delete[] data;
 	}
-	/*拷贝构造函数*/
+	/*拷贝构造函数,防止浅复制*/
 	Array(const Array& a){
 	    maxsize=a.maxsize;
 		size=a.size;
