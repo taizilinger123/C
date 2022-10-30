@@ -19,7 +19,7 @@ class Integer{
   static void operator delete(void* ptr){
        free(ptr);
   }
-  /*重载()*/
+  /*重载()把Integer变成int*/
   operator int(){
     return data;
   }
