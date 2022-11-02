@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 class Person{
+  //Person*  p; //不能写成Person p;void  test(Person p)这个test函数重复调用Person把栈撑爆了要写成指针形式Person* p;下面test函数的形参就可以用了
    string name;//string是4个自己
    int    age;
    public:
@@ -9,6 +10,9 @@ class Person{
    }
    void  show(){
       cout<<"this is a  person show()"<<endl;
+   }
+   void  test(Person p){
+      
    }
 };
 class Student{//空的学生类大小是1
