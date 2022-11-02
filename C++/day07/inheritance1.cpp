@@ -11,6 +11,10 @@ class Person{
       cout<<"this is a  person show()"<<endl;
    }
 };
+class Student{//空的学生类大小是1
+   public:
+   Person  p;
+};
 class Emp:public Person{//:public Person继承写法
    double salary;//double是8个字节  
    public:
@@ -19,6 +23,9 @@ class Emp:public Person{//:public Person继承写法
    }
 };
 int main(){
+   cout<<sizeof(Student)<<endl;
+   Student  stu;
+   stu.p.show();
    cout<<sizeof(Person)<<endl;
    cout<<sizeof(Emp)<<endl;
    Emp  e;
