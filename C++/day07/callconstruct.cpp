@@ -1,9 +1,13 @@
 #include <iostream>
 using namespace std;
 class A{
+   int data;
    public:
    A(){
       cout<<"A()"<<endl;
+   }
+   A(int a):data(a){
+      cout<<"A(int)"<<endl;
    }
    ~A(){
       cout<<"~A()"<<endl;
@@ -11,7 +15,7 @@ class A{
 };
 class B:public A{
     public:
-    B(){
+    B():A(100){
 	   cout<<"B()"<<endl;
 	}
 	~B(){
