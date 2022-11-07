@@ -18,7 +18,7 @@ class B{
       cout<<"~B()"<<endl;
    }
 };
-class C:public A,public B{
+class C:public B,public A{
    public:
    C(){
      cout<<"C()"<<endl;
