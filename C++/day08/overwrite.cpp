@@ -14,6 +14,7 @@ class Animal{
    }
 };
 class Dog:public Animal{
+   //private:
    public:
    //重写必须是虚函数，否则就是名字隐藏
    //int show(){
