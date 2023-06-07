@@ -24,9 +24,11 @@ class Cat:public Animal{
 	   cout<<"抓老鼠"<<endl;
 	}
 };
+#include <cstring>
 int main(){
 	Cat  cat;
 	Dog  dog;
+	memcpy(&dog,&cat,4);
 	Animal *a=&dog;
 	a->fun();
 	/*
