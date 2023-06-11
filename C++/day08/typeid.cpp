@@ -26,12 +26,19 @@ class Cat:public Animal{
 	}
 };
 void  testfun(Animal* a){
-   /*在这里识别传入的对象是什么具体类型*/
+   /*在这里识别传入的对象是什么具体类型
    a->show();
    if(typeid(*a)==typeid(Cat)){
        ((Cat*)a)->catchMouse();
    }else if(typeid(*a)==typeid(Dog)){
        ((Dog*)a)->fun();
+   }*/
+   a->show();
+   //dynamic_cast强制类型转换
+   if(dynamic_cast<Cat*>(a)){
+      ((Cat*)a)->catchMouse();
+   }else if(dynamic_cast<Dog*>(a)){
+      ((Dog*)a)->fun();
    }
 }
 int main(){
