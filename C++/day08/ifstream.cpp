@@ -10,9 +10,9 @@ int main(){
    /*while((c=ifs.get())!=EOF){
       cout.put(c);
    }*/
-   while(ifs){
-	  /*格式化输入*/
-      ifs>>c;
+   while(ifs>>c){
+	  /*格式化输入 考虑一下写在内部和循环中的区别*/
+      //ifs>>c;
 	  cout.put(c);
    }
    ifs.close();
