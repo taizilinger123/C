@@ -17,10 +17,12 @@ class A{
 	}
 };
 //typedef类型定义
-typedef void (*VFUN) (A* a,int);
+/*typedef void (*VFUN) (A* a,int);*/
+typedef void (VFUN)(A* a,int);
 //VFUN=void (*)(A* a,int);
 //这个意思是定义VFUN为void (*)(A* a,int)函数的别名
-typedef VFUN* VTABLE;
+//typedef VFUN* VTABLE;
+typedef VFUN** VTABLE;
 //这个意思是定义VFUN*为VTABLE
 //VFUN*的意思是*VFUN指针的指针
 //VTABLE是VFUN的数组，这个数组装了一个一个VFUN的元素, VFUN*定义出VTABLE来, int*表达int的数组
