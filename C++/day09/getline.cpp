@@ -2,8 +2,10 @@
 using namespace std;
 int main(){
   /*0123456789 123*/
-  char data[10];
-  cin.getline(data,10);
+  //char data[10];
+  //cin.getline(data,10);
+  string data;
+  getline(cin,data,'=');
   cout<<data<<endl;
   cout<<cin<<endl;
   /*clear()复位*/
