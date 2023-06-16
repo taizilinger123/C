@@ -15,6 +15,7 @@ int main(){
    cout<<name2[0]<<endl;
    name2=name1;
    cout<<name2<<endl;
+   /*c++的字符串 变成c风格的字符串*/
    const char* cstr=name2.c_str();
    cout<<cstr<<endl;
 }
