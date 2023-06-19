@@ -4,6 +4,19 @@
 #include <sstream>
 #include <iomanip>
 using namespace std;
+class Date{
+   int year;
+   int month;
+   int day;
+   public:
+   Date(int y=2023,int m=1,int d=1):year(y),
+   month(m),day(d){ 
+   }
+   /*重载输出运算符*/
+   friend ostream& operator<<(ostream& os,const Date&d){
+     return os<<d.year<<'-'<<d.month<<'-'<<d.day;
+   }
+};
 int main(){
   char timestr[100];
   time_t t=time(NULL);
@@ -20,4 +33,12 @@ int main(){
 		setw(2)<<mytm->tm_mday<<"testfile";
   string cppstr=ostr.str();
   cout<<cppstr<<endl;
+  istringstream istr("tarena 2013 10.23");
+  string a;
+  int    b;
+  double c;
+  istr>>a>>b>>c;
+  cout<<a<<endl;
+  cout<<b<<endl;
+  cout<<c<<endl;
 }
