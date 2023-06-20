@@ -41,4 +41,9 @@ int main(){
   cout<<a<<endl;
   cout<<b<<endl;
   cout<<c<<endl;
+  Date date(2023,6,20);
+  ostringstream odate;
+  odate<<date;
+  string datestr=odate.str();
+  cout<<datestr<<endl;
 }
