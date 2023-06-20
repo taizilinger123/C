@@ -12,7 +12,7 @@ class Date{
    Date(int y=2023,int m=1,int d=1):year(y),
    month(m),day(d){ 
    }
-   /*重载输出运算符*/
+   /*重载输出运算符，访问私有成员用friend*/
    friend ostream& operator<<(ostream& os,const Date&d){
      return os<<d.year<<'-'<<d.month<<'-'<<d.day;
    }
