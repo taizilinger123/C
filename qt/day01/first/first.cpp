@@ -33,4 +33,5 @@ root@test:/home/test/biaoc/C/qt/day01/first# ls
 first  first.cpp  first.o  first.pro  Makefile
 root@test:/home/test/biaoc/C/qt/day01/first# ./first 
 first: cannot connect to X server 
+sh  ../../../gitPush.sh
  */
