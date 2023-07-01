@@ -18,6 +18,8 @@ int main(int argc,char** argv){
    qlab->show();
    /*实现点击按钮  关闭标签*/
    QObject::connect(qpush,SIGNAL(clicked()),qlab,SLOT(close()));
+   /*点击按钮  关闭父窗口*/
+   QObject::connect(qpush,SIGNAL(clicked()),parent,SLOT(close()));
    return app.exec();
 }
 
