@@ -9,6 +9,7 @@ int main(int argc,char** argv){
    parent->show();
    QPushButton *qpush=new QPushButton("close",parent);
    qpush->resize(100,100);
+   qpush->move(200,250);
    qpush->show();
    return app.exec();
 }
