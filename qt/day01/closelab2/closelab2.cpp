@@ -16,5 +16,23 @@ int main(int argc,char** argv){
    QLabel  *qlab=new QLabel("hello qt",parent);
    qlab->move(200,50);
    qlab->show();
+   /*实现点击按钮  关闭标签*/
+
    return app.exec();
 }
+
+/*
+root@test:/home/test/biaoc/C/qt/day01/closelab2# make 
+make: Nothing to be done for 'first'.  #这个意思是没有任何代码改变
+root@test:/home/test/biaoc/C/qt/day01/closelab2# ls
+closelab2  closelab2.cpp  closelab2.o  closelab2.pro  Makefile
+root@test:/home/test/biaoc/C/qt/day01/closelab2# ./closelab2 
+如果之前执行过qmake -project  qmake  make  ./closelab2后面再改当前代码
+就只需要执行make ./closelab2就可以了，不需要再执行make -project qmake了
+root@test:/home/test/biaoc/C/qt/day01/closelab2# cat   ../../../gitPush.sh 
+#!/bin/bash 
+DATE=`date +%Y%m%d`
+git  add *
+git commit -m  "$DATE"
+git  push  git@github.com:taizilinger123/C.git
+*/
