@@ -17,7 +17,7 @@ int main(int argc,char** argv){
    qlab->move(200,50);
    qlab->show();
    /*实现点击按钮  关闭标签*/
-
+   QObject::connect(qpush,SIGNAL(clicked()),qlab,SLOT(close()));
    return app.exec();
 }
 
