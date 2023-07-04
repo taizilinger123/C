@@ -1,5 +1,5 @@
 #include <QApplication>
-#include <QLabel>
+#include <QtGui/QLabel>
 int main(int argc,char**argv){
    /*构建一个QApplication  对象*/
    QApplication  app(argc,argv);
