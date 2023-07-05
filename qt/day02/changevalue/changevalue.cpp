@@ -23,6 +23,7 @@ int main(int argc,char **argv){
    /*如何让qsli去影响qspin*/
    QObject::connect(qsli,SIGNAL(valueChanged(int)),
 		   qspin,SLOT(setValue(int)));
+   /*qspin去影响qsli*/
    QObject::connect(qspin,SIGNAL(valueChanged(int)),
 		   qsli,SLOT(setValue(int)));
    return  app.exec();
