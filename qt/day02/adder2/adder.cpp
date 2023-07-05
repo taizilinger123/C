@@ -41,11 +41,12 @@ void  Adder::getRes(){
 	/*1.得到add和added的输入值
 	  2.把得到的QString的值变成int
 	  3.相加得到和 把和变成QString类型
-	  4.最后赋值给res*/
+	  4.最后赋值给res
 	QString  sadd=add->text();
 	QString  sadded=added->text();
     int  iadd=sadd.toInt();
 	int  iadded=sadded.toInt();
 	int  sum=iadd+iadded;
-	res->setText(QString::number(sum));
+	res->setText(QString::number(sum));*/
+    res->setText(QString::number(add->text().toInt()+added->text().toInt()));
 }
