@@ -12,6 +12,8 @@ QQ::QQ(){
    userpasswd->move(200,100);
    login->move(50,200);
    cancel->move(250,200);
+   connect(login,SIGNAL(clicked()),this,SLOT(loginAndCancel()));
+   connect(cancel,SIGNAL(clicked()),this,SLOT(loginAndCancel()));
 }
 //析构函数
 QQ::~QQ(){
@@ -20,7 +22,18 @@ QQ::~QQ(){
    delete login;
    delete cancel;
 }
+#include <QMessageBox>
 //槽函数
 void  QQ::loginAndCancel(){
-
+   /*要区分是那个按钮*/
+   if(((QPushButton*)sender())->text()=="cancel"){
+      this->close();
+   }
+   if(((QPushButton*)sender())->text()=="login"){
+      if(username->text()=="abc"&&userpasswd->text()=="123"){
+	      qDebug("login  success");
+	  }else{
+	      qDebug("login  failed");
+	  }
+   }
 }
