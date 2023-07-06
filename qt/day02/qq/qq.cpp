@@ -27,7 +27,13 @@ QQ::~QQ(){
 void  QQ::loginAndCancel(){
    /*要区分是那个按钮*/
    if(((QPushButton*)sender())->text()=="cancel"){
-      this->close();
+	  /*退出之前给用户一个选择*/
+	  QMessageBox  msg;
+	  msg.setText("are you quit?");
+	  msg.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+	  if(msg.exec()==QMessageBox::Yes){   
+         this->close();
+	  }
    }
    if(((QPushButton*)sender())->text()=="login"){
       if(username->text()=="abc"&&userpasswd->text()=="123"){
