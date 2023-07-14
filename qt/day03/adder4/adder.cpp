@@ -17,3 +17,6 @@ Adder::~Adder()
 {
     delete ui;
 }
+
+/*工具->选项->环境->键盘->keyboard shortcuts里面输入comp->选中
+CompleteThis->下面输入框里的快捷键改为alt+/->apply->ok*/
