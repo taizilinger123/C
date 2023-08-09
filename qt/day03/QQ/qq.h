@@ -14,7 +14,8 @@ class QQ : public QDialog
 public:
     explicit QQ(QWidget *parent = 0);
     ~QQ();
-
+public slots:
+    void loginAndCancel();
 private:
     Ui::QQ *ui;
 };
