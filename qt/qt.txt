@@ -1,0 +1,306 @@
+什么是qt?
+qt是用户图形框架(软件的半成品)
+基于c++语言   gtk(c)
+一个专注于图形的框架   xml   sql 
+跨平台   windows linux  mac  arm 
+
+2005   qt4.0  
+2009   开源
+
+
+
+为什么选择qt
+1.qt基于c++  面向对象   简易
+2.跨平台   
+3.开源    功能强大
+----------------------------------------------------------
+1.qt的开发工具
+ubuntu16.04 安装qmake
+sudo apt-get install build-essential
+sudo apt-get install qt4-dev-tools qt4-doc qt4-qtconfig qt4-demos qt4-designer qtcreator   -y 
+qmake -version
+qmake      
+       qmake  -version    qt的版本信息
+       qmake  -project    会把qt程序的源代码组织成项目描述文件 ***.pro
+       qmake                  把项目描述文件    变成makefile(文件依赖关系)
+
+make   根据makefile生成目标
+
+designer  设计器   设计师
+                一个可见即所得的图形编辑工具
+                得到的界面文件     ***.ui
+
+uic           把ui文件   转换成.h文件           
+qtcreator 集成了所有开发命令的开发工具
+2.qt的头文件
+    对图形界面元素的类型定义
+    /usr/include/qt4
+    qt按照功能把头文件  进行了分模块
+    QtCore  QtGui
+    QtSql     QtXml  QtNetwork   QtOpenGL
+  
+    #include  <QApplication>
+    #include  <QLabel>
+    #include  <QWidget>
+
+    没有.h类名  和头文件的名字是一致的
+    一个类一个头文件  并且没有.h
+3.qt的库文件
+   是对头文件的分模块的实现
+   /usr/lib/x86_64-linux-gnu
+   libQtGui.so
+   libQtCore.so
+------------------------------------------------
+4.第一个qt程序
+   #include <QApplication>
+   #include <QLabel>
+   int main(int argc,char**  argv){
+      QApplication  app(argc,argv);
+      QLabel  qlab("hello qt");
+      qlab.show();
+      return  app.exec();
+   }
+   1.使用c++写程序
+   2.qt的应用的程序
+     QApplication
+   3.查文档    assistant(帮助文档)在vmware虚拟机里的terminal终端里面输入这个命令不然打不开
+   4.任何一个qt  都是一个工程  需要有单独的文件夹
+   
+      qmake -project 
+      qmake 
+      make 
+      ./first
+
+   5.帮助文档
+     a.类所属于的模块
+       QLabel       QtGui
+       #include  <QtGui/QLabel>
+       #include  <QLabel>
+     b.类的继承   关系   父子类
+        大部分的类   继承自QObject  
+     
+     c.类中用的别的类的类型
+        类的属性
+     d.公开函数
+        构造函数
+        成员函数(继承来的)
+     f.信号  和  槽      函数
+       public  slots:
+       void  show();
+       /*信号函数  只需要声明  不需要实现 系统会自动实现*/
+       public  :signals:
+       void  mySig();
+      g.保护函数  事件处理函数
+      
+      h.静态函数
+         不需要对象就可以调用的函数
+    
+      i.类的详细说明
+
+   6.中文显示
+      QObect  中有静态函数  tr
+      QObect::tr("中文字符串","编码方式");
+      GBK     gb2312    utf-8
+
+      QTextCodec  类来设置编码
+      静态函数创建对象 
+      QTextCodec::codecForName("编码方式");
+      /*设置编码对象*/
+      QTextCodec::setCodecForTr(指针);
+
+      直接把字符串  使用QTextCodec对象  直接转换
+      toUnicode("中文字符串");
+
+   7.如何退出程序？
+      #include <QLabel>
+      #include <QPushButton>
+
+      QPushButton  对象的行为    点击行为
+      QLabel   类型的对象的行为   关闭行为
+    
+      QObject  中有一个可以关联两个毫不相关的对象的静态函数。
+      bool  connect(
+      const  QObject*   sender,
+      const   char*  signal,
+      const   QObject*  receiver,
+      const   char*  method);
+      sender   信号的发送者指针
+      signal    要发射的信号(信号函数)
+      receiver 信号的接收者
+      method 处理信号的函数(一般是槽函数)
+    
+      QPushButton  找一个信号函数代表点击按钮
+            void  clicked();
+            SIGNAL(clicked())  宏
+      QLabel            找一个槽函数  代表关闭
+            void  close();
+            SLOT(close())        宏
+
+   8.如何让组件在一个界面中显示
+      如果一个对象没有父窗口指针   则这个对象就成为一个独立的窗体。
+      如果一个对象指定了父窗口指针则这个对象就会停靠在父窗口上。
+      父窗口类型必须是QWidget类型或者QWidget的子类型。QDialog QMainWindow
+
+      调整组件大小   resize(x,y);
+      调整组件的位置  move(x,y);
+
+   9.带参的信号 和 槽
+      窗口部件   QWidget
+      滑块类      QSlider
+      微调框      QSpinBox
+
+      QSlider       能代表滑动的信号函数
+                        sliderMoved(int val);
+                        SIGNAL(sliderMoved(int))
+      QSpinBox   找一个槽函数   代表值改变
+                        /*槽函数完全可以作为成员函数*/
+                        void  setValue(int val);
+                        SLOT(setValue(int))
+      如果信号和槽函数中有参数 并且没有参数的默认值  则在进行信号和槽连接时 
+      必须在宏中指定参数的类型并且只能指定参数的类型不能指定形式参数名。 
+      QObject::connect(
+               qsli,SIGNAL(sliderMoved(int)),
+               qspin,SLOT(setValue(int)));                    
+
+      作业：
+          1.让微调框  去影响滑块
+          2.做一个qq登录框   实现cancel 思考如何实现login   abc/123
+          3.实现加法器界面    只实现关闭功能         
+          4.写一个c++代码  使用proc++连接数据库(思考)
+          5.加密解密的实现
+
+   10.  加法器1
+   11.  加法器2
+         使用c++  方式编写qt的代码
+         1.头文件  和  实现文件必须分离
+         2.类的对象如果要显示到屏幕上   则必须继承QWidget  或者子类
+         3.界面中使用到组件   都要作为这个类成员变量
+         4.如果类中有自定义的信号和槽   则必须在头文件中引入一个宏Q_OBJECT 
+
+         1.写加法器的头文件
+            继承
+            类的成员变量的定义
+            如果要自定义槽函数    或者信号  Q_OBJECT
+            导入相应的头文件
+         2.写实现文件
+            注意父窗口指针   this 
+            组件的赋值
+            组件的位置
+            组件的释放内存
+            槽函数的实现
+            信号和槽  在构造函数中连接
+         3.写测试文件
+
+         按照上面的方式    实现qq登录框  
+         点击cancel  关闭主窗口
+         点击login    如果用户是abc    密码是123
+         就输出login   success  如果不是就输出login  faild
+-----------------------------------------------------------------------------
+12.信号和槽
+1.信号和槽机制是qt编程的基础，可以使互不相干的对象绑定在一起
+2.槽可以和信号连接在一起，这样绑定之后，每当发射(触发)这个信号的时候，就会自动的调用这个槽。
+3.如果在类中要定义信号槽必须声明宏Q_OBJECT;
+4.定义信号  public:signals:   定义槽函数public  slots:
+   public  slots:
+   void   show();
+   public:signals:
+   void   mysig(QString par);
+5.使用connect进行连接：
+   可以连接两个互不相关的对象
+  connect(sender,SIGNAL(signal),receiver,SLOT(slot));
+  QObject::connect(
+       const   QObject* sender,
+       const   char       *signal,
+       const   QObject*   receiver,
+       const   char        *method);
+       SIGNAL     SLOT
+  QObject::disconnect(
+       const   QObject* sender,
+       const   char       *signal,
+       const   QObject*   receiver,
+       const   char        *method);
+       SIGNAL     SLOT
+6.连接可以被移除 几乎不用
+  disconnect(lcd,SIGNAL(overflow()),this,SLOT(handleMathError()));
+补充：
+   1.一个信号  可以连接到多个槽
+     connect(a,SIGNAL(t()),b,SLOT(testg()));
+     connect(a,SIGNAL(t()),c,SLOT(testgg()));
+   2.一个槽  可以被多个信号绑定
+     connect(a,SIGNAL(t()),b,SLOT(testg()));
+     connect(a,SIGNAL(tt()),b,SLOT(testg()));
+   3.一个信号可以连接到一个信号
+     connect(a,SIGNAL(t()),b,SIGNAL(tg()));
+     connect(b,SIGNAL(tg()),c,SLOT(game()));
+   4.一个对象销毁之后和这个对象关联的连接会自动断开。
+是不是任意的信号   和  任意的槽函数都能进行连接？不能
+信号和槽连接时必须有相同的参数个数  相同的参数类型  相同的参数顺序。
+除非信号和槽有参数的默认值。
+当信号和槽有参数时  在进行连接时  就需要在宏中出现参数的类型。
+a.使用自定义槽函数 间接连接
+   自定义的槽函数 和 按钮的clicked()绑定
+   然后在自定义的槽函数中  调用setText(QString)
+   就相当于点击clicked()  调用了setText(QString)
+   *通过自定义的槽  函数调用槽函数   
+
+b.通过自定义槽函数  和 信号函数 
+   clicked()信号  和自定义槽函数绑定
+   自定义槽函数中发射信号
+   发射的信号  再和setText(QString)绑定。
+   *自定义槽函数    加  自定义信号
+---------------------------------------------------------------
+13.设计器的使用
+    (简化界面的设计)
+    加法器的第二个版本
+    实现加法器的第三个版本
+
+    新建一个界面文件
+    拖拽组件  复制组件    鼠标改变界面大小
+    移动组件的位置   选择组件   使用方向键+ctrl  可以调整组件的位置   每次1px
+    双击改变组件文本大小
+    属性编译器  可以改变组件的属性
+    ctrl+i
+    视图---属性编辑器
+    字体   对象名
+    对象查看器
+    查看修改是否正确
+
+a.准备ui文件
+b.把ui文件转换成.h
+   uic   jfq.ui   -o   jfq.h
+c.头文件就是界面文件
+   加载界面即可
+d.写一个自己的类的头文件
+f.写自己类的实现
+g.写测试文件
+
+   1.元素的拖拽
+      对元素大小  和  位置的调整
+   2.修改元素的属性
+      字体   大小  等显示相关的属性  
+      对象的名字
+   3.对象查看器
+      对象和对象之间的组织关系
+      对象的名字   和对象的类型
+   4.如何把ui文件变成.h
+     uic   jfq.ui    -o   jf1.h
+   5.如何使用.h文件
+
+四.qtcreator的使用
+让qtcreator工具自带补全快捷键
+工具->选项->环境->键盘->keyboard shortcuts里面输入comp->选中
+CompleteThis->下面输入框里的快捷键改为alt+/->apply->ok
+先选中对象然后按ctrl+i改输入框里面的属性的名字，点设计
+如何删除qtcreator里面的img资源文件，资源->pics.qrc右键->删除文件->勾选包括子目录
+如何添加资源文件->yaojiang[master]项目上右键->添加新文件->Qt->Qt Resource File->Choose...->名称：随便填一个名字pics->下一步
+->完成->双击新生成的pics.qrc->添加->添加前缀->前缀:/new/prefix1->删到只保留/就是: 前缀:/->添加->添加文件->
+双击img进入->选中任何一个一张图片->ctrl+A全选->打开->关闭打开的pics.qrc*文件->保存所有
+
+
+
+
+
+
+
+
+
