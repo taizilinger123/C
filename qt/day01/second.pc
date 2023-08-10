@@ -2,11 +2,24 @@
 using namespace std;
 exec sql include sqlca;
 int main(){
+   exec  sql  begin  declare  section;
    char  userpasswd[30]="openlab/open123";
    char  var_name[30];
+   exec  sql  end    declare  section;
    exec  sql connect:userpasswd;
    exec  sql select first_name  into :var_name
 	   from  s_emp  where id=2;
    cout<<"var_name="<<var_name<<endl;
    exec  sql commit work  release; 
 }
+
+/*proc 默认按照c处理   和c++相关的三个预编译选项
+ 
+ 1.code=cpp  代码风格设置成cpp  默认是ansi_c
+ 2.parse=none  推荐的c++方式    默认是full
+ 3.oname=***.cpp  文件后缀的使用
+ 4.所有的宿主变量放入申明区 
+ proc  second.pc  code=cpp  parse=none oname=second.cpp 
+ g++   second.cpp  -lclntsh
+ ./a.out
+ */

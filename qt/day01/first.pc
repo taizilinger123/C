@@ -9,3 +9,10 @@ int main(){
    printf("var_name=%s\n",var_name);
    exec  sql commit work  release;
 }
+
+/*
+ bash 
+ proc  first.pc 
+ gcc   first.c  -lclntsh
+ ./a.out
+ */
