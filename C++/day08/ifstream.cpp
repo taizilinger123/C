@@ -10,9 +10,10 @@ int main(){
    /*while((c=ifs.get())!=EOF){
       cout.put(c);
    }*/
+   //while(ifs>>c)正常输出
    while(ifs>>c){
 	  /*格式化输入 考虑一下写在内部和循环中的区别*/
-      //ifs>>c;
+      //ifs>>c;  输出多了一个}错误的
 	  cout.put(c);
    }
    ifs.close();
