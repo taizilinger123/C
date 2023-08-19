@@ -52,7 +52,7 @@ private:
 */
 template<>
 class Dual<int, int> {
-//class Dual<int, int>表示T1T2是int类型完全特化
+//class Dual<int, int>表示T1T2都是int类型完全特化
 public: 
    Dual (const int& t1, const int& t2):m_t1 (t1), m_t2(t2){}
    void print(void) const {
