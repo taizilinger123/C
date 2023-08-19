@@ -19,8 +19,10 @@ private:
 int main(void){
 Dual<double, double> d1 (1.23, 4.56);
 d1.print();
+cout<<"-------------"<<endl;
 Dual<double, int> d2 (7.89, 123);
 d2.print();
+cout<<"-------------"<<endl;
 Dual<int, int> d3 (456, 789);
 d3.print();
 return 0;
