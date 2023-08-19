@@ -17,5 +17,11 @@ private:
    T2  m_t2;
 };
 int main(void){
+Dual<double, double> d1 (1.23, 4.56);
+d1.print();
+Dual<double, int> d2 (7.89, 123);
+d2.print();
+Dual<int, int> d3 (456, 789);
+d3.print();
 return 0;
 }
