@@ -53,11 +53,11 @@ public:
 int main(void){
    /*
    smart_ptr<A> pa (new A);
-   smart_ptr<A> pb (pa);
+   smart_ptr<A> pb (pa);//转移语义，做拷贝构造
    smart_ptr<A> pc;
-   pc = pb;
+   pc = pb;//赋值 pc拿着A的地址了
    pc->m_data = 100;
-   cout << (*pc).m_data << endl;
+   cout << (*pc).m_data << endl; //指针语义
    */
    smart_ptr<A> pa (new A[3]);
    return 0;
