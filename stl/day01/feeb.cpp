@@ -33,4 +33,12 @@ int main(void){
    Feeb<char*****> f4;
    return 0;
 }
-
+/*
+ root@test:/home/test/biaoc/C/stl/day01# vi feeb.cpp
+ root@test:/home/test/biaoc/C/stl/day01# g++ feeb.cpp 
+ root@test:/home/test/biaoc/C/stl/day01# ./a.out 
+ Feeb<T>: c
+ Feeb<T[]>: c
+ Feeb<T*>: c
+ Feeb<T*>: PPPPc
+ */
