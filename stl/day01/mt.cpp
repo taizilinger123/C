@@ -6,12 +6,23 @@ class Pair{
 public:
   Pair(const K& k):m_k(k){}
   K m_k;
+  /*
   template<typename V>
   class Value{
   public:
 	Value(const V& v):m_v(v){}
     V m_v;
   };
+  */
+  template<typename V>
+  class Value;
+};
+template<typename K>
+  template<typename V>
+class Pair<K>::Value{
+public:
+   Value(const V& v):m_v(v){}
+   V m_v;
 };
 int main(void){
     Pair<string> pair("PAI");
