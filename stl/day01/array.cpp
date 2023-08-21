@@ -36,6 +36,15 @@ int main(void) {
    cout<<a3.size()<<endl;
    cout<<typeid(a3[0]).name()<<endl;
    cout<<setfill('$')<<setw(10)<<123<<endl;//一共10个字符宽度，空白的地方填$字符
+   Array<Array<int, 4>, 3> a4;
+   for(size_t i = 0; i< a4.size(); ++i)
+	   for(size_t j=0; j<a4[i].size(); ++j)
+		   a4[i][j] = (i+1)*10+(j+1);
+   for(size_t i = 0; i< a4.size(); ++i) {
+	   for(size_t j=0; j<a4[i].size(); ++j)
+		   cout<<a4[i][j]<<' ';
+       cout<<endl;
+   }
    return 0;
 }
 //模板是在编译时候传参数，不是在运行的时候传参
