@@ -45,6 +45,12 @@ int main(void) {
 		   cout<<a4[i][j]<<' ';
        cout<<endl;
    }
+   Array<Array<Array<int, 3>, 3>, 3> a5;
+   /*
+	Array<List<int>, 3> a6;//链表的数组
+	List<Array<int, 3>> a7;//数组的链表
+	*/
+   Array<Array<> > a8;//>>不能挨着写
    return 0;
 }
 //模板是在编译时候传参数，不是在运行的时候传参
