@@ -11,7 +11,7 @@ public:
   ~list(void){
      clear();
   }
-  list(const list& that){
+  list(const list& that): m_head(NULL), m_tail(NULL){
      for(node* p=that.m_head; p; p=p->m_next)
 		 push_back(p->m_data);
   }
@@ -107,13 +107,29 @@ public:
 	 }
   }
   //清空
-  void clear(void){}
+  void clear(void){
+     for(node* next; m_head; m_head = next){
+	    next = m_head->m_next;
+		delete m_head;
+	 }
+  }
   //判空
-  bool empty(void) const {}
+  bool empty(void) const {
+    return m_head == NULL && m_tail == NULL; 
+  }
   //获取元素数
-  size_t size(void) const{}
+  size_t size(void) const{
+    size_t counter = 0;
+	for (node* p = m_head; p; p = p->m_next)
+		++counter;
+	return counter;
+  }
   //插入输出流
-  friend ostream& operator<<(ostream& os, const list& lst){}
+  friend ostream& operator<<(ostream& os, const list& lst){
+    for (node* p = lst.m_head; p; p = p->m_next)
+		os << *p;
+	return os;
+  }
 private:
   // 节点模板
   class node{
@@ -130,6 +146,35 @@ private:
   node*  m_head;//头指针
   node*  m_tail;//尾指针
 };
+void test1(void){
+   list<int> lst1;
+   lst1.push_back(50);
+   lst1.push_back(60);
+   lst1.push_back(50);
+   lst1.push_back(70);
+   cout << lst1 << endl;// 50 60 50 70
+   lst1.push_front(40);
+   lst1.push_front(30);
+   lst1.push_front(50);
+   lst1.push_front(20);
+   cout << lst1 << endl;//20 50 30 40 50 60 50 70
+   lst1.pop_back();//20 50 30 40 50 60 50
+   cout << lst1 << endl;
+   lst1.pop_front();//50 30 40 50 60 50
+   cout << lst1 << endl;
+   ++lst1.front();
+   lst1.back() = 40;
+   cout << lst1 << endl;//51 30 40 50 60 40
+   const list<int>& rlst = lst1;
+   //rlst.front()++;
+   const list<int>* plst = &lst1;
+   //plst->back() = 100;
+   list<int> lst2 = lst1;//拷贝构造，深拷贝
+   lst1.remove(40);
+   cout << lst1 << endl;//51 30 50 60
+   cout << lst2 << endl;//51 30 40 50 60 40
+}
 int main(void){
+  test1();
   return 0;
 }
