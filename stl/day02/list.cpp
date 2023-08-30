@@ -11,6 +11,13 @@ public:
   ~list(void){
      clear();
   }
+/*
+const list& that下它的意思：
+const: 这表示参数是一个常量，即在函数内部不能修改这个参数的值。
+list&: 这是一个引用参数，表示函数将使用传递给它的 list 对象，而不是创建该对象的副本。引用允许在函数内部对传递的对象进行修改，这种修改会影响到函数外部的原始对象。
+that: 这是参数的名称，您可以在函数内部使用它来引用传递的 list 对象。
+所以，"const list& that" 表示一个常量引用参数，用于传递一个 list 对象给函数，并且函数内部不能修改该对象的值，但可以访问和使用它。这种方式通常用于避免不必要的对象拷贝并提高性能，同时限制了函数对传递对象的修改。""
+*/
   list(const list& that): m_head(NULL), m_tail(NULL){
      for(node* p=that.m_head; p; p=p->m_next)
 		 push_back(p->m_data);
@@ -93,7 +100,7 @@ public:
   void remove(const T& data){
      for (node* p = m_head, *next; p; p=next){
 	    next = p->m_next;
-		if(p->m_data == data){
+		if(equal(p->m_data == data)){
 		   if (p->m_prev)
 			   p->m_prev->m_next = p->m_next;
 		   else
@@ -143,9 +150,28 @@ private:
 	node*  m_prev;//前指针
 	node*  m_next;//后指针
   };
+  /*
+   const T& a是什么意思？
+   在C++中，const T& a 表示一个常量引用变量，
+   其中：
+const: 表示变量是一个常量，即它的值不能被修改。
+T: 是一个类型名，表示引用变量的数据类型。
+&: 表示这是一个引用，即它引用（指向）了另一个对象的内存地址。
+a: 是变量的名称。
+综合起来，const T& a 表示一个引用变量 a，它引用了一个类型为 T 的对象，而且在程序中不能通过 a 修改该对象的值，因为它被声明为常量引用。这样的声明常常用于避免不必要的数据拷贝，同时提供了一种保护机制，确保在函数或作用域内部不会意外地修改引用的对象。
+   */
+  //判等函数的通用版本
+  bool equal(const T& a, const T& b) const {
+     return a == b;
+  }
   node*  m_head;//头指针
   node*  m_tail;//尾指针
 };
+//判断函数针对const char*类型的特化版本
+template<>
+bool list<const char*>::equal() const{
+
+}
 void test1(void){
    list<int> lst1;
    lst1.push_back(50);
@@ -173,8 +199,72 @@ void test1(void){
    lst1.remove(40);
    cout << lst1 << endl;//51 30 50 60
    cout << lst2 << endl;//51 30 40 50 60 40
+   lst1 = lst2;
+   lst2.remove(40);
+   cout << lst1 << endl;//51 30 40 50 60 40
+   cout << lst2 << endl;//51 30 50 60
+   cout << lst1.size()<<' '<<lst2.size()<<endl;//6 4
+   lst1.clear();
+   cout<<boolalpha<<lst1.empty()<<' '<<lst2.empty()<<endl;
+}
+void test2(void){
+  list<string> lst1;
+  lst1.push_back("beijing");
+  lst1.push_back("tianjin");
+  lst1.push_back("shanghai");
+  lst1.push_back("beijing");
+  lst1.push_back("beijing");
+  cout<<lst1<<endl;
+  lst1.remove("beijing");
+  cout<<lst1<<endl;
+}
+void test3(void){
+  list<const char*> lst1;
+  lst1.push_back("beijing");
+  lst1.push_back("tianjin");
+  lst1.push_back("shanghai");
+  lst1.push_back("beijing");
+  lst1.push_back("beijing");
+  cout<<lst1<<endl;
+  char str[] = "beijing";
+  lst1.remove(str);
+  cout<<lst1<<endl;
 }
 int main(void){
   test1();
+  test2();
+  test3();
   return 0;
 }
+/*
+ root@test:/home/test/biaoc/C/stl/day02# vi  list.cpp 
+ root@test:/home/test/biaoc/C/stl/day02# g++  list.cpp 
+ root@test:/home/test/biaoc/C/stl/day02# ./a.out 
+ (50)(60)(50)(70)
+ (20)(50)(30)(40)(50)(60)(50)(70)
+ (20)(50)(30)(40)(50)(60)(50)
+ (50)(30)(40)(50)(60)(50)
+ (51)(30)(40)(50)(60)(40)
+ (51)(30)(50)(60)
+ (51)(30)(40)(50)(60)(40)
+ (51)(30)(40)(50)(60)(40)
+ (51)(30)(50)(60)
+ 6 4
+ false false
+###########################################################
+
+在C++中，a& 和 &a 有不同的含义：
+
+a&：这表示一个引用变量的声明。它用于创建一个引用，将其与现有变量绑定在一起。例如，int x = 42; int& y = x; 将创建一个引用 y，它引用变量 x，并且对 y 的任何操作都会影响到变量 x。
+
+&a：这是取地址运算符，用于获取变量 a 的内存地址。例如，int x = 42; int* ptr = &x; 将创建一个指针 ptr，它存储变量 x 的内存地址。
+
+下面是一个更完整的示例，说明这两者之间的不同：
+#include <iostream>
+int main() {
+    int x = 42;
+	int& y = x;   // 创建一个引用 y，绑定到 x
+	int* ptr = &x; // 创建一个指针 ptr，存储 x 的地址
+    std::cout << "x: " << x << std::endl;     // 输出 x 的值
+}
+ */
