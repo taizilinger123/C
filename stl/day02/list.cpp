@@ -1,6 +1,7 @@
 //模仿STL实现一个泛型化的链表容器
 #include <iostream>
 #include <stdexcept>
+#include <cstring>
 using namespace std;
 //链表模板
 template<typename T>
@@ -114,7 +115,7 @@ m_head(NULL), m_tail(NULL) 是初始化列表（initializer list）。它指定�
   void remove(const T& data){
      for (node* p = m_head, *next; p; p=next){
 	    next = p->m_next;
-		if(equal(p->m_data == data)){
+		if(equal(p->m_data, data)){
 		   if (p->m_prev)
 			   p->m_prev->m_next = p->m_next;
 		   else
@@ -133,6 +134,8 @@ m_head(NULL), m_tail(NULL) 是初始化列表（initializer list）。它指定�
 	    next = m_head->m_next;
 		delete m_head;
 	 }
+	 m_head = NULL; 
+	 m_tail = NULL;
   }
   //判空
   bool empty(void) const {
@@ -174,17 +177,17 @@ T: 是一个类型名，表示引用变量的数据类型。
 a: 是变量的名称。
 综合起来，const T& a 表示一个引用变量 a，它引用了一个类型为 T 的对象，而且在程序中不能通过 a 修改该对象的值，因为它被声明为常量引用。这样的声明常常用于避免不必要的数据拷贝，同时提供了一种保护机制，确保在函数或作用域内部不会意外地修改引用的对象。
    */
-  //判等函数的通用版本
+  //判等函数的通用版本,从右往左看const T& a,就是&a的引用是T的类型，const是修饰&a的,const是修饰a的目标，a是一个引用，引用T类型，T是具有常属性的,看类型都是从右往左看，所以const是修饰a的目标的。
   bool equal(const T& a, const T& b) const {
      return a == b;
   }
   node*  m_head;//头指针
   node*  m_tail;//尾指针
 };
-//判断函数针对const char*类型的特化版本
+//判等函数针对const char*类型的特化版本,(const char* const& a) a是一个长引用，引用的是一个长指针, char*就是代表字符指针。
 template<>
-bool list<const char*>::equal() const{
-
+bool list<const char*>::equal(const char* const& a, const char* const& b) const {
+  return strcmp(a, b) == 0;//strcmp要加头文件#include<cstring>
 }
 void test1(void){
    list<int> lst1;
@@ -264,7 +267,11 @@ int main(void){
  (51)(30)(40)(50)(60)(40)
  (51)(30)(50)(60)
  6 4
- false false
+true false
+(beijing)(tianjin)(shanghai)(beijing)(beijing)
+(tianjin)(shanghai)
+(beijing)(tianjin)(shanghai)(beijing)(beijing)
+(tianjin)(shanghai)
 ###########################################################
 
 在C++中，a& 和 &a 有不同的含义：
