@@ -318,7 +318,8 @@ void test4(void){
   cout<< lst1 << endl;
   for(list<int>::iterator it = lst1.begin();
 	 it != lst1.end(); ++it)
-	  ++*it;
+	  //++*it;
+	  *it += 10;
   cout<< lst1 << endl;
 }
 int main(void){
