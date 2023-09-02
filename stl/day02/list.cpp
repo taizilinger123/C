@@ -134,7 +134,7 @@ m_head(NULL), m_tail(NULL) 是初始化列表（initializer list）。它指定�
 	    next = m_head->m_next;
 		delete m_head;
 	 }
-	 m_head = NULL; 
+	 //m_head = NULL; 
 	 m_tail = NULL;
   }
   //判空
@@ -183,6 +183,70 @@ a: 是变量的名称。
   }
   node*  m_head;//头指针
   node*  m_tail;//尾指针
+public:
+  //正向迭代器
+  class iterator {
+  public:
+     iterator(node* head = NULL, node* tail = NULL, node* p =NULL):m_head (head), m_tail(tail),m_node(p){}
+  //判断相等
+  bool operator==(const iterator& it) const {
+	  return m_node == it.m_node;
+  }
+  //判断不相等
+  bool operator!=(const iterator& it) const {
+      return !(*this == it);
+  }
+  //前加加
+  iterator& operator++ (void){
+	  if(m_node)
+		m_node = m_node->m_next;
+	  else
+		m_node = m_head;
+	  //返回变化的结果
+	  return *this;
+  }
+  //后加加
+  const iterator operator++ (int) {
+	  iterator old = *this;
+	  ++*this;
+	  return old;
+  }
+  //前减减
+  iterator& operator-- (void){
+	  if (m_node)
+		m_node = m_node->m_prev;//双向链表指前指后一样
+	  else
+	    m_node = m_tail;
+	  return *this; //返回调用对象的自引用
+  }
+  //后减减
+  const iterator operator-- (int) {
+	  iterator old = *this;
+	  --*this;
+	  return old;
+  }
+  //*号运算,取目标
+  T& operator* (void) const {
+	  return m_node->m_data;
+  }
+  //箭头运算,取成员
+  T* operator-> (void) const {
+      return &**this;
+  }
+  private:
+	 node* m_head;
+	 node* m_tail;
+	 node* m_node;
+	 friend class list;
+  };
+  //获取起始正向迭代器
+  iterator begin (void){
+     return iterator(m_head, m_tail, m_head);
+  }
+  //获取终止正向迭代器
+  iterator end (void){
+     return iterator(m_head, m_tail);
+  }
 };
 //判等函数针对const char*类型的特化版本,(const char* const& a) a是一个长引用，引用的是一个长指针, char*就是代表字符指针。
 template<>
@@ -247,10 +311,21 @@ void test3(void){
   lst1.remove(str);
   cout<<lst1<<endl;
 }
+void test4(void){
+  list<int> lst1;
+  for(int i = 0; i < 10; ++i)
+	  lst1.push_back(i);
+  cout<< lst1 << endl;
+  for(list<int>::iterator it = lst1.begin();
+	 it != lst1.end(); ++it)
+	  ++*it;
+  cout<< lst1 << endl;
+}
 int main(void){
-  test1();
-  test2();
-  test3();
+  //test1();
+  //test2();
+  //test3();
+  test4();
   return 0;
 }
 /*
