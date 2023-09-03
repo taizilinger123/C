@@ -247,6 +247,43 @@ public:
   iterator end (void){
      return iterator(m_head, m_tail);
   }
+  //在正向迭代器之前插入
+  iterator insert(iterator loc, const T& data) {
+     if (loc == end()){
+	    push_back (data);
+		return iterator (m_head, m_tail, m_tail);
+	 }
+	 else {
+	    node* p = new node(data, 
+				loc.m_node->m_prev, loc.m_node);
+		if (p->m_prev)
+			p->m_prev->m_next = p;
+		else
+			m_head = p;
+		p->m_next->m_prev = p;
+		return iterator (m_head, m_tail, p);
+	 }
+  }
+  //删除正向迭代器的目标元素
+  iterator erase (iterator loc) {
+     if (loc == end())//删除的最后节点的下一个节点，根本不存在非法
+		 throw invalid_argument("非法参数!");
+	 /*
+	  如果被删除的节点存在前节点
+	  被删除的节点的前节点里面的后指针指向被删除的节点的后节点
+	  */
+	 if (loc.m_node->m_prev)
+		 loc.m_node->m_prev->m_next = loc.m_node->m_next;
+	 else
+		 m_head = loc.m_node->m_next;
+	 if (loc.m_node->m_next)
+		 loc.m_node->m_next->m_prev = loc.m_node->m_prev;
+	 else
+		 m_tail = loc.m_node->m_prev;
+	 node* next = loc.m_node->m_next;
+	 delete loc.m_node;
+	 return iterator(m_head, m_tail, next);
+  }
 };
 //判等函数针对const char*类型的特化版本,(const char* const& a) a是一个长引用，引用的是一个长指针, char*就是代表字符指针。
 template<>
@@ -321,6 +358,14 @@ void test4(void){
 	  //++*it;
 	  *it += 10;
   cout<< lst1 << endl;
+  list<int>::iterator it = lst1.begin();
+  ++++++it;
+  it = lst1.insert(it, 100);
+  cout << lst1 <<endl;
+  cout << *it <<endl;
+  it = lst1.erase(it);
+  cout << lst1 << endl;
+  cout << *it <<endl;
 }
 int main(void){
   //test1();
