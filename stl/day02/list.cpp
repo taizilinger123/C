@@ -284,6 +284,52 @@ public:
 	 delete loc.m_node;
 	 return iterator(m_head, m_tail, next);
   }
+  //常正向迭代器
+  class const_iterator{
+  public:
+	const_iterator(void) {}
+	const_iterator(const iterator& it):m_it(it){}
+	bool operator== (const const_iterator& it) const {
+	  return m_it == it.m_it;
+	}
+	bool operator!= (
+      const const_iterator& it) const {
+	  return ! (*this == it);
+	}
+	const_iterator& operator++ (void){
+	  ++m_it;
+	  return *this;
+	}
+	const const_iterator operator++ (int) {
+	  const_iterator old = *this;
+	  ++*this;
+	  return old;
+	}
+	const_iterator& operator-- (void){
+	  --m_it;
+	  return *this;
+	}
+	const const_iterator operator-- (int) {
+	  const_iterator old = *this;
+	  --*this;
+	  return old;
+	}
+	const T& operator* (void) const {
+	  return *m_it;
+	}
+	const T* operator-> (void) const {
+	  return &**this;
+	}
+  private:
+	iterator m_it;
+  };
+  /*
+  //反向迭代器
+  class reverse_iterator{};
+  //常反向迭代器
+  class const_reverse_iterator{};
+  */
+
 };
 //判等函数针对const char*类型的特化版本,(const char* const& a) a是一个长引用，引用的是一个长指针, char*就是代表字符指针。
 template<>
@@ -366,6 +412,12 @@ void test4(void){
   it = lst1.erase(it);
   cout << lst1 << endl;
   cout << *it <<endl;
+  //const list<int>::iterator cit = lst1.begin();
+  //*cit = 1000;
+  //cout << lst1 << endl;
+  list<int>::const_iterator cit = lst1.begin();
+  cout << *cit << endl;
+  //*cit = 1000;
 }
 int main(void){
   //test1();
@@ -374,6 +426,15 @@ int main(void){
   test4();
   return 0;
 }
+/*
+ root@test:/home/test/biaoc/C/stl/day02# ./a.out 
+ (0)(1)(2)(3)(4)(5)(6)(7)(8)(9)
+ (10)(11)(12)(13)(14)(15)(16)(17)(18)(19)
+ (10)(11)(12)(100)(13)(14)(15)(16)(17)(18)(19)
+ 100
+ (10)(11)(12)(13)(14)(15)(16)(17)(18)(19)
+ 13
+ */
 /*
  root@test:/home/test/biaoc/C/stl/day02# vi  list.cpp 
  root@test:/home/test/biaoc/C/stl/day02# g++  list.cpp 
