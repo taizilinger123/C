@@ -336,6 +336,65 @@ template<>
 bool list<const char*>::equal(const char* const& a, const char* const& b) const {
   return strcmp(a, b) == 0;//strcmp要加头文件#include<cstring>
 }
+/*
+int find(int a[], int len, int key){
+  for(int i=0; i < len; ++i)
+	  if (a[i] == key)
+		  return i;
+  return -1;
+}
+*/
+/*
+int* find (int* begin, int* end, int key){
+  for (int* p = begin; p != end; ++p)
+	  if (*p == key)
+		 return p;
+  return NULL;
+}
+*/
+/*指针和迭代器和数组共有的行为很通用很泛化不特化,
+ c++中编写一个通用型的查找函数find(),可以在任意类型的数组或list容器中，查找特定的元素*/
+/*
+template<typename iterator, typename type>
+iterator find (iterator begin, iterator end, type key){
+  for (iterator it = begin; it != end; ++it)
+	  if (*it == key)
+		 return it;
+  return end;
+}
+
+template<typename IT, typename K>
+IT find (IT begin, IT end, K key){
+  for (IT it = begin; it != end; ++it)
+	  if (*it == key)
+		 return it;
+  return end;
+}
+*/
+
+template<typename IT, typename K>
+IT find (IT begin, IT end, K key){
+	while (begin != end){
+	   if(*begin == key) 
+ /*此处要支持==, 解决办法：重载运算符(指针是地址没办法重载)
+   或者特化(你死掉了怎么特化)*/
+		   break;
+	   ++begin;
+	}
+  return begin;
+}
+
+template<typename IT, typename K, typename C>
+IT find (IT begin, IT end, K key, C cmp){
+	while (begin != end){
+	   if(cmp(*begin, key)) 
+		   break;
+	   ++begin;
+	}
+  return begin;
+}
+
+
 void test1(void){
    list<int> lst1;
    lst1.push_back(50);
@@ -419,11 +478,53 @@ void test4(void){
   cout << *cit << endl;
   //*cit = 1000;
 }
+/*相等比较器，函数指针实现的*/
+bool cmpstr(const char* a, const char* b){
+  return ! strcmp(a, b); 
+  //!strcmp(a, b)=判断a是否等于b,strcmp(a, b)=0返回为true
+}
+/*比较器，函数类实现的*/
+class CmpStr {
+public:
+  bool operator()(const char* a, const char* b){
+     return ! strcmp(a, b);
+  }
+};
+//在类里operator()小括号运算法可以当函数掉
+void test5(void) {
+  int a[5] = {12, 33, 27, 19, 44};
+  int* pa = find(&a[0], &a[5], /*19*/20);
+  if (pa == &a[5])
+	  cout << "没找到!" << endl;
+      //cout << " "<< pa << endl;
+	  //cout << &a[5] << endl;
+  else
+	  cout << "找到了:" << *pa << endl;
+  char cities[][256] = {"北京","上海","重庆","天津","上海"};
+  list</*string*/char*> b;
+  /*
+  b.push_back(cities[0]);
+  b.push_back(cities[1]);
+  b.push_back(cities[2]);
+  b.push_back(cities[3]);
+  b.push_back(cities[4]);
+  */
+  for (size_t i = 0; i< sizeof(cities)/sizeof(cities[0]); ++i)
+	  b.push_back(cities[i]);
+  list</*string*/char*>::iterator it = find (b.begin(),
+	b.end(), /*string("上海")*/"上海", /*cmpstr*/CmpStr());
+  if (it == b.end())
+	  cout << "没找到!" << endl;
+  else 
+	  cout << "找到了:" << *it << endl;
+}
+//迭代器，指针，算法，运算符重载，模板，容器融合在一起了
 int main(void){
   //test1();
   //test2();
   //test3();
-  test4();
+  //test4();
+  test5();
   return 0;
 }
 /*
