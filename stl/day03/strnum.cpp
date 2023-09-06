@@ -11,3 +11,7 @@ int main(void){
    cout << endl;
    return 0;
 }
+
+//iconv  -f  gbk  -t utf8  movies.dat > m.dat
+//rm  movies.dat 
+//mv  m.dat  movies.dat
