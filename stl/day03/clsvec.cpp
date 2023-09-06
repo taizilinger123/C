@@ -21,10 +21,19 @@ public:
    bool operator== (const A& that) const{
        return m_a == that.m_a;
    }
+   /*
    bool operator< (const A& that) const{
        return m_a < that.m_a;
    }
+   */
    int m_a;
+   friend class CmpA; //友元可以访问类里面的私有部分
+};
+class CmpA {
+public:
+   bool operator() (const A& x, const A& y) const{
+      return x.m_a < y.m_a; 
+   } 
 };
 int main(void){
 	cout << "-------- 1 --------" << endl;
@@ -47,7 +56,8 @@ int main(void){
 		cout << "没找到!" << endl;
 	else
 	    cout << "找到了:" <<it->m_a << endl;
-	sort(va.begin(), va.end());
+	//sort(va.begin(), va.end());
+	sort(va.begin(), va.end(), CmpA());
 	for(it = va.begin(); it != va.end(); ++it)
 		cout << it->m_a << ' ';
 	cout << endl;
