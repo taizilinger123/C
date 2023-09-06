@@ -31,9 +31,12 @@ public:
 };
 class CmpA {
 public:
-   bool operator() (const A& x, const A& y) const{
-      return x.m_a < y.m_a; 
+    CmpA(bool raise = true): m_raise(raise) {}
+	bool operator() (const A& x, const A& y) const{
+      return m_raise ? (x.m_a < y.m_a):(x.m_a > y.m_a); 
    } 
+private:
+   bool m_raise;
 };
 int main(void){
 	cout << "-------- 1 --------" << endl;
@@ -58,6 +61,10 @@ int main(void){
 	    cout << "找到了:" <<it->m_a << endl;
 	//sort(va.begin(), va.end());
 	sort(va.begin(), va.end(), CmpA());
+	for(it = va.begin(); it != va.end(); ++it)
+		cout << it->m_a << ' ';
+	cout << endl;
+	sort(va.begin(), va.end(), CmpA(false));
 	for(it = va.begin(); it != va.end(); ++it)
 		cout << it->m_a << ' ';
 	cout << endl;
