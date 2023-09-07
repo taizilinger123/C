@@ -81,3 +81,9 @@ int main(int argc, char* argv[]){
 	  return -1;
   return 0;
 }
+
+/*
+ root@test:/home/test/biaoc/C/stl/day03# g++   rank.cpp 
+ root@test:/home/test/biaoc/C/stl/day03# ./a.out  movies.dat rank.dat
+
+ */
