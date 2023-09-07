@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <cstdlib>
+using namespace std;
 class Movie {
 public:
    friend istream& operator>> (istream& is, Movie& movie){
@@ -31,8 +32,7 @@ private:
    string m_company;
    string m_gross;
 };
-int read (const char* filename, 
-    vector<Movie>&char* filename,
+int read (const char* filename,
 	vector<Movie>& movies){
     ifstream ifs (filename);
 	if (! ifs) {
@@ -41,7 +41,7 @@ int read (const char* filename,
 	}
 	Movie movie;
 	while (ifs >> movie)
-		movie.push_back (movie);
+		movies.push_back(movie);
 	if (! ifs.eof()){
 	  cout << "读取票房文件失败!" << endl;
 	  return -1;
@@ -77,5 +77,7 @@ int main(int argc, char* argv[]){
   sort (movies.begin(), movies.end());
   if (movies.size() > 10)
 	  movies.resize(10);
+  if (write (argv[2], movies) == -1)
+	  return -1;
   return 0;
 }
