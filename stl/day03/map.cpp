@@ -22,9 +22,11 @@ int main(void) {
   map<char, Candidate> cs;
   cs.insert (pair<char, Candidate> ('A', Candidate("张飞")));
   cs.insert (make_pair('B', "关羽"));
+  cs.insert (make_pair('B', "黄忠"));//重复的key不能insert入
   cs['C'] = Candidate("赵云");
   cs['D'] = Candidate("刘备");
   cs['E'] = Candidate("曹操");
+  cs['B'] = Candidate("马超");//覆盖之前的valueB关羽
   typedef map<char, Candidate>::iterator IT;
   typedef map<char, Candidate>::const_iterator CIT;
   for(int i = 0;i < 10; ++i) {
