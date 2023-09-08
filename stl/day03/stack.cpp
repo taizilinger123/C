@@ -28,7 +28,8 @@ private:
 	C m_c;
 };
 int main(void){
-  my_stack<string, vector<string> > ss;
+  stack<string/*, vector<string>*/> ss;
+  //stack<string, vector<string>  > ss; //这里尖括号后面有空格
   ss.push("饭!");
   ss.push("要吃");
   ss.push("我们");
