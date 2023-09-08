@@ -44,7 +44,7 @@ int main(void) {
 	CIT win = cs.begin();
 	for(CIT it = cs.begin(); it != cs.end(); ++it){
 	    cout << it->second.name() << "获得"<< 
-			it->second.votes()<<"张票。";
+			it->second.votes()<<"张票。" << endl;
 	    if (it->second.votes() > win->second.votes())
 			win = it;
   }
