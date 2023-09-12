@@ -1,15 +1,24 @@
 #include <iostream>
 #include <map>
 using namespace std;
+template<typename IT>
+void print(IT begin, IT end){
+  for(IT it = begin; it != end; ++it)
+	  cout << it->first << "同学得" << it->second << "分。"<<endl;
+}
 int main(void) {
   map<string, int> msi;
-  msi["张飞"] = 85;
-  msi["赵云"] = 90;
-  msi["关羽"] = 88;
-  msi["刘备"] = 60;
-  msi["曹操"] = 75;
+  msi["zhangfei"] = 85;
+  msi["zhaoyun"] = 90;
+  msi["guanyu"] = 88;
+  msi["liubei"] = 60;
+  msi["caocao"] = 75;
+  print(msi.begin(), msi.end());
+  cout << "----------------"<<endl;
   typedef map<string, int>::iterator IT;
-  for(IT it = msi.begin(); it != msi.end(); ++it)
-	  cout << it->first << "同学得" << it->second << "分。"<<endl;
+  IT it = msi.begin();
+  ++it;
+  msi.erase(it);
+  print(msi.begin(), msi.end());
   return 0;
 }
