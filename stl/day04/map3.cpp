@@ -5,6 +5,7 @@ class Integer {
 public:
    Integer(int data): m_data(data) {}
    bool operator< (const Integer& i) const {
+	   //打印比较过程跟单步调试有点像
 	   cout << "比较" << m_data << "和" << i.m_data << endl;
        return  m_data < i.m_data;
    }
