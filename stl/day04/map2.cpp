@@ -20,5 +20,15 @@ int main(void) {
   ++it;
   msi.erase(it);
   print(msi.begin(), msi.end());
+  cout << "----------------"<<endl;
+  IT begin = msi.begin();
+  ++begin;
+  IT end = msi.end();
+  --end;
+  msi.erase(begin, end);
+  print(msi.begin(), msi.end());
+  cout << "----------------"<<endl;
+  msi.erase("zhaoyun");
+  print(msi.begin(), msi.end());
   return 0;
 }
