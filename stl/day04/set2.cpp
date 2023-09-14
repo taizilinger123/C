@@ -15,6 +15,7 @@ int main(void) {
 	   s2.insert(*it);
    for (set<char>::iterator it = s2.begin();
 	   it != s2.end(); ++it)
+	   //插不进去的必是相同的
 	   if (! s1.insert(*it).second)
 		   cout << *it;
    cout << endl;
