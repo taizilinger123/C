@@ -1,0 +1,83 @@
+一、字符串
+1.basic_string<T>
+typedef basic_string<char> string;
+GBK -  2char/汉字， 1char/数字或字母
+UTF-8 -  1~4char/字符  
+hello 
+wslen -> 1
+iconv
+typedef basic_string<wchar_t> wstring;
+
+UNICODE  -  UCS-2 - 2char/字符   unsigned short (微软)
+                     UCS-4 - 4char/字符  unsigned  int (unix)
+2.字符串实例化形式
+string s;
+string s ("");
+string s = "";
+string s ("hello");
+string s = "hello";
+string s = string ("");
+string s = string ("hello");
+string* p = new string;
+string* p = new string();
+string* p = new string("");
+string* p = new string("hello");
+3.c和c++字符串相互转化
+c -> c++
+char* psz = "hello"; c
+char sz[] = "hello"; c
+string s (psz);  c++
+s = sz;   c++
+c++ - > c
+string s ("hello");
+const char* p = s.c_str();
+4.字符串的运算符
++/=/+=/</<=/>/>=/==/!=/>>/<</[]
+5.字符串的大小和容量
+获取大小
+size_type size (void) const;
+size_type length (void) const;
+改变大小
+void  resize (size_type size, const char& ch = '\0');
+清空字符
+void clear(void);
+判断是否空
+bool empty (void) const;
+获取容量
+size_type capacity (void) const;
+改变容量
+void reserve (size_type size);
+string s = "hello";
+ofstream ofs ("hello.dat");
+ofs.write(&s, sizeof(s));  // ERROR!
+ofs.write(&s, s.length()); // ERROR!
+ofs.write(s.c_str(), s.size()); // OK
+ofs << s; // OK
+6.拼接、搜索、子串
++/+=
+append
+find_first_of
+find_first_not_of
+find_last_of
+find_last_not_of
+substr
+string
+7.访问特定字符
+[] - 不检查下标溢出
+at - 检查下标溢出, out_of_range
+8.查找、替换
+find
+replace
+9.插入、删除
+insert 
+erase
+10.交换、复制
+swap
+assign
+11.其它
+begin/end/rbegin/rend
+push_back
+c_str/data
+copy
+
+
