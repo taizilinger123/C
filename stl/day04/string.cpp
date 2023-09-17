@@ -40,6 +40,20 @@ int main(void) {
 	 pos += s8.size();
   }
   cout << s6 << endl;
+  string s9 = "ABCD";
+  s9.insert(2, "1234");
+  cout << s9 << endl;
+  s9.erase (2, 4);
+  cout << s9 << endl;
+  s9.erase (2);
+  cout << s9 << endl;
+  s9.erase ();
+  cout << s9 << endl;
+  string s10 = "XXX", s11 = "YYY";
+  s10.swap(s11);//交换了字符串的首地址即指针,效率高,不用像c一样还要引入第三个参数
+  cout << s10 << ' ' << s11 << endl;
+  s10.assign(s11); //这里将s11的值赋值给s10,assign等同于=号
+  cout << s10 << endl;
   return 0;
 }
 
