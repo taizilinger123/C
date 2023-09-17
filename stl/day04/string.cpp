@@ -18,5 +18,10 @@ int main(void) {
 		++pos;
  }
   cout << counter << "个标点。" << endl;
+  //string s4 = s3.substr(5);
+  //string s4 = s3.substr(5, 4);
+  //string s4 (s3, 5); //拷贝构造, 从s3的第5个位置构造s4
+  string s4 (s3, 5, 4);
+  cout << s4 << endl;
   return 0;
 }
