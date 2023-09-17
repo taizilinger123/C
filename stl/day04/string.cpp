@@ -23,5 +23,35 @@ int main(void) {
   //string s4 (s3, 5); //拷贝构造, 从s3的第5个位置构造s4
   string s4 (s3, 5, 4);
   cout << s4 << endl;
+  string s5 = "1234";
+  //s5[10] = '5'; //吐核心转储错误
+  try { 
+      s5.at(10) = '5';
+  }
+  catch (exception& ex) {
+      cout << ex.what()<< endl;
+  }
+  string s6 = "one hello is hello like any other hello";
+  string s7 = "hello";
+  string s8 = "Tarena";
+  pos = 0;
+  while((pos = s6.find (s7, pos)) != string::npos){
+     s6.replace(pos, s7.size(), s8);
+	 pos += s8.size();
+  }
+  cout << s6 << endl;
   return 0;
 }
+
+
+/*
+ root@test:/home/test/biaoc/C/stl/day04# g++ string.cpp 
+ string.cpp: In function ‘int main()’:
+ string.cpp:37:21: error: redeclaration of ‘std::__cxx11::basic_string<char>::size_type pos’
+    string::size_type pos = 0;
+	                     ^
+						 string.cpp:13:21: note: ‘std::__cxx11::basic_string<char>::size_type pos’ previously declared here
+						    string::size_type pos = 0;
+							                     ^
+这个意思是13行先前已经定义过了pos,37行直接用就行，不用再定义了
+ */
