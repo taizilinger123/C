@@ -27,6 +27,7 @@ void my_swap(type& a, type& b){
    a = b;
    b = c;
 }
+//泛型版本的快速排序，2个参数和3个参数版本的
 //快速排序,二个参数的比较器快速排序
 template<typename iterator>
 void my_sort(iterator begin, iterator end){
