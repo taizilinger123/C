@@ -44,11 +44,35 @@ void sel(int data[],size_t size){//选择排序
 	  }
 	}
 }
+void quick(int data[],size_t left, //快速排序
+  size_t right){//size被左右边界替代
+   size_t p = (left+right)/2;//以中间做基准
+   int pivot = data[p]; //存储基准数
+   size_t i = left,j = right;
+   while(i<j){//i j没碰面继续找，相等退出
+      for(;!(i>=p || pivot<data[i]);i++);//移动i
+	  if(i<p){
+	     data[p] = data[i];
+		 p = i;
+	  }
+	  for(;!(j<=p || pivot>data[j]);j--);//移动j
+	  if(j>p){
+	    data[p] = data[j];
+		p = j;
+	  }
+   }
+   data[p] = pivot;
+   if((p-left)>1)//左边元素个数大于1
+	 quick(data,left,p-1);
+   if((right-p)>1)
+	 quick(data,p+1,right);
+}
 int main(){
    int data[] = {9,7,2,4,5,8,1,3,6};
    //bubble(data,sizeof(data)/sizeof(data[0]));
    //insert(data,sizeof(data)/sizeof(data[0]));
    sel(data,sizeof(data)/sizeof(data[0]));
+   quick(data,0,sizeof(data)/sizeof(data[0])-1);
    int i;
    for(i=0;i<sizeof(data)/sizeof(data[0]);i++){
       printf("%d\n",data[i]);
