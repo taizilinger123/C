@@ -67,12 +67,32 @@ void quick(int data[],size_t left, //快速排序
    if((right-p)>1)
 	 quick(data,p+1,right);
 }
+//3数组归并 外部归并
+void outer_merge(int data1[],size_t size1,
+  int data2[],size_t size2,int data3[]){
+  int i=0,j=0,k=0;
+  for(;;){
+     if(i<size1 && j<size2){//双方供货
+	    if(data2[j]<data1[i])
+		  data3[k++] = data2[j++];
+		else data3[k++] = data1[i++];
+	 }else{//单方供货
+	    if(i<size1) data3[k++] = data1[i++];
+		else if(j<size2) data3[k++] = data2[j++];
+		else break;//归并已经完成
+	 }
+  }
+}
 int main(){
-   int data[] = {9,7,2,4,5,8,1,3,6};
+   //int data[] = {9,7,2,4,5,8,1,3,6};
    //bubble(data,sizeof(data)/sizeof(data[0]));
    //insert(data,sizeof(data)/sizeof(data[0]));
-   sel(data,sizeof(data)/sizeof(data[0]));
-   quick(data,0,sizeof(data)/sizeof(data[0])-1);
+   //sel(data,sizeof(data)/sizeof(data[0]));
+   //quick(data,0,sizeof(data)/sizeof(data[0])-1);
+   int data1[] = {1,3,5,7,9,10};
+   int data2[] = {2,4,6,8};
+   int data[10];
+   outer_merge(data1,6,data2,4,data);
    int i;
    for(i=0;i<sizeof(data)/sizeof(data[0]);i++){
       printf("%d\n",data[i]);
