@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void bubble(int data[],size_t size){//冒泡排序
   int i;
@@ -83,16 +84,37 @@ void outer_merge(int data1[],size_t size1,
 	 }
   }
 }
+//单数组归并，内部归并(由两个有序子数组组成)
+void inner_merge(int data[],size_t left,
+  size_t mid,size_t right){//开始/分隔/结束下标
+   size_t size = (right-left+1)*sizeof(int);
+   int* merge = malloc(size);//临时存储排序数据
+   outer_merge(data+left,mid-left+1,
+	  data+mid+1,right-mid,merge);
+   memcpy(data+left,merge,size);//内存拷贝
+   free(merge);
+}
+void merge(int data[],size_t left,//归并排序 
+  size_t right){
+  if(left<right){
+    int mid = (left+right)/2;
+	merge(data,left,mid);//left到mid有序
+	merge(data,mid+1,right);//mid+1到right有序
+	//data已经变成2个有序的子数组，可以使用内部归并了
+	inner_merge(data,left,mid,right);
+  }
+}
 int main(){
-   //int data[] = {9,7,2,4,5,8,1,3,6};
+   int data[] = {9,7,2,4,5,8,1,3,6};
    //bubble(data,sizeof(data)/sizeof(data[0]));
    //insert(data,sizeof(data)/sizeof(data[0]));
    //sel(data,sizeof(data)/sizeof(data[0]));
    //quick(data,0,sizeof(data)/sizeof(data[0])-1);
-   int data1[] = {1,3,5,7,9,10};
+   /*int data1[] = {1,3,5,7,9,10};
    int data2[] = {2,4,6,8};
    int data[10];
-   outer_merge(data1,6,data2,4,data);
+   outer_merge(data1,6,data2,4,data);*/
+   merge(data,0,8);
    int i;
    for(i=0;i<sizeof(data)/sizeof(data[0]);i++){
       printf("%d\n",data[i]);
