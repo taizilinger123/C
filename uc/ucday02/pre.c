@@ -60,4 +60,28 @@ pre.c:6:3: error: attempt to use poisoned "goto"
    goto ok;
       ^
 	  """"""
+root@test:/home/test/biaoc/C/uc/ucday02# vi  /etc/profile
+root@test:/home/test/biaoc/C/uc/ucday02# source   /etc/profile
+root@test:/home/test/biaoc/C/uc/ucday02# a.out
+goto
+main over
+size=6
+root@test:/home/test/biaoc/C/uc/ucday02# tail  -n  1  /etc/profile
+export PATH=.:$PATH
+root@test:/home/test/biaoc/C/uc/ucday02# a.out
+goto
+main over
+size=6
+root@test:/home/test/biaoc/C/uc/ucday02# vi  /etc/profile
+root@test:/home/test/biaoc/C/uc/ucday02# source  /etc/profile
+[/home/test/biaoc/C/uc/ucday02]$ls
+a.out  hello.c  pre.c
+[/home/test/biaoc/C/uc/ucday02]$a.out
+goto
+main over
+size=6
+[/home/test/biaoc/C/uc/ucday02]$tail  -n  2  /etc/profile
+export PS1='[\w]$'
+export PATH=$PATH:.
+
  */
