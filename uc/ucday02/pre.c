@@ -2,7 +2,7 @@
 
 #pragma  GCC dependency "hello.c"//确保当前文件比hello.c新
 #pragma  GCC poison goto//禁止goto(下面代码)
-#pragma  pack(1/*2*/)//针对结构的对齐和补齐
+#pragma  pack(1/*2*/)//针对结构体的对齐和补齐
 int main(){
   //goto ok;
   printf("goto\n");
