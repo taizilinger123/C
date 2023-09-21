@@ -3,7 +3,7 @@
 int main() {
   
 	printf("hello c\n");
-    
+    return 0;    
 }
 
 
@@ -31,6 +31,7 @@ int main() {
  a.out：未找到命令
  root@test:/home/test/biaoc/C/uc/ucday01# ./a.out
  hello c
+ root@test:/home/test/biaoc/C/uc/ucday01# gcc  hello.c -Wall
 
  gcc的常见选项：
  -v  查看gcc编译器的版本
