@@ -83,5 +83,10 @@ size=6
 [/home/test/biaoc/C/uc/ucday02]$tail  -n  2  /etc/profile
 export PS1='[\w]$'
 export PATH=$PATH:.
+[/home/test/biaoc/C/uc/ucday02]$tail  -n  4  /etc/profile
+export CPATH=$CPATH:.
+export LIBRARY_PATH=$LIBRARY_PATH:.
+export PS1='[\w]$'
+export PATH=$PATH:.
 
  */
