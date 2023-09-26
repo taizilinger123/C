@@ -14,4 +14,6 @@ int main(){
    //因此errno不能用于判断是否出错
    printf("文件成功打开\n");
    fclose(file);
+   file = NULL;
+   return 0;
 }
