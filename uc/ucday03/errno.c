@@ -17,3 +17,10 @@ int main(){
    file = NULL;
    return 0;
 }
+
+/*
+ [/home/test/biaoc/C/uc/ucday03]$gcc -E  errno.c -oerrno.i
+ [/home/test/biaoc/C/uc/ucday03]$ls
+ a.out  errno.c  errno.i
+ [/home/test/biaoc/C/uc/ucday03]$vi errno.i
+ */
