@@ -12,8 +12,10 @@ int main(){
    printf("%d\n",*(p1+200));//能打印
    printf("p1=%p,p2=%p,p3=%p,p4=%p\n",p1,p2,p3,p4);
    printf("pid=%d\n",getpid());
-   *(p1-1) = 0;//清p1前面4个字节,额外信息被清
+   //*(p1-1) = 0;//清p1前面4个字节,额外信息被清
    free(p1);
-   //free(p2);
+   free(p2);
+   free(p3);
+   free(p4);
    while(1);
 }
