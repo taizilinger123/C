@@ -14,7 +14,7 @@ int main(){
    void* cur = sbrk(0);//取当前的位置->04
    printf("cur=%p\n",cur);//只有p1有效
    printf("*p1=%d,*p2=%d,*p3=%d\n",*p1,*p2,*p3);
-   int* p5 = sbrk(4);
+   int* p5 = sbrk(4);//p2无效变量，被p5覆盖
    *p5 = 50;
    printf("*p2=%d\n",*p2);
    while(1);
