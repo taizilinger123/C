@@ -17,5 +17,9 @@ int main(){
    int* p5 = sbrk(4);//p2无效变量，被p5覆盖
    *p5 = 50;
    printf("*p2=%d\n",*p2);
+   sbrk(4089);
+   sleep(20);
+   printf("sleep over\n");
+   sbrk(-1);
    while(1);
 }
