@@ -20,6 +20,6 @@ int main(){
    sbrk(4089);
    sleep(20);
    printf("sleep over\n");
-   sbrk(-1);
+   sbrk(-4097/*-1*/);
    while(1);
 }
