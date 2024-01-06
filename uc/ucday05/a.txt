@@ -1,0 +1,59 @@
+root@test:/home/test/biaoc/C/uc/ucday05# echo  hello > /dev/tty
+hello
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# cat < a.txt 
+hello
+root@test:/home/test/biaoc/C/uc/ucday05# cat < /dev/tty
+nihao
+nihao
+wo lai le 
+wo lai le 
+shdjjshhdshdjsfhh;das
+shdjjshhdshdjsfhh;das
+root@test:/home/test/biaoc/C/uc/ucday05# ls
+a.txt
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# ls
+a.txt
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# echo hello > /dev/null
+root@test:/home/test/biaoc/C/uc/ucday05# cat a.txt 
+hello
+root@test:/home/test/biaoc/C/uc# cd   ucday05/
+root@test:/home/test/biaoc/C/uc/ucday05# ls
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# echo hello 
+hello
+root@test:/home/test/biaoc/C/uc/ucday05# echo hello > a.txt
+root@test:/home/test/biaoc/C/uc/ucday05# ls
+a.txt
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# cat a.txt 
+hello
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# echo > /dev/tty
+
+root@test:/home/test/biaoc/C/uc/ucday05# echo  hello > /dev/tty
+hello
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# cat < a.txt 
+hello
+root@test:/home/test/biaoc/C/uc/ucday05# cat < /dev/tty
+nihao
+nihao
+wo lai le 
+wo lai le 
+shdjjshhdshdjsfhh;das
+shdjjshhdshdjsfhh;das
+root@test:/home/test/biaoc/C/uc/ucday05# touch b.txt 
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# vi  b.txt 
+root@test:/home/test/biaoc/C/uc/ucday05# 
+root@test:/home/test/biaoc/C/uc/ucday05# cat /dev/null > a.txt 
+root@test:/home/test/biaoc/C/uc/ucday05# cat a.txt
+man 2  open
