@@ -16,5 +16,6 @@ int main(){
    printf("读到了%d字节，内容： %s\n",res,buf);
    close(fd);
 }
+//练习：用uc的系统函数实现文件复制
 
 
