@@ -11,3 +11,5 @@ int main(){
   printf("写入%d个字节成功\n",res);
   close(fd);
 }
+
+//vim的wq保存有个换行, vi的没有
