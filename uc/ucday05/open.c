@@ -23,6 +23,7 @@ int main(){
 //void *buf void *比数组大，是首地址 size_t代表buf的大小
 /*
 int read(int fd, void* buf, size_t size);  读是从文件里的读到内存里去，写是从内存里写到文件里去。
+学函数就是看参数和返回值这2点
 参数：fd      代表  一个打开的文件描述符
 	  buf            一块内存的首地址
 	  size            buf的大小(sizeof)
