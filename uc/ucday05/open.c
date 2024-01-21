@@ -15,3 +15,5 @@ int main(){
    printf("fd=%d\n",fd);
    close(fd);
 }
+//man 2 open 
+//man 2 read
