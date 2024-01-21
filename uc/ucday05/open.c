@@ -17,3 +17,4 @@ int main(){
 }
 //man 2 open 
 //man 2 read
+//void * 是万能指针可以转化为char *,string *
