@@ -17,5 +17,5 @@ int main(){
    close(fd);
 }
 //练习：用uc的系统函数实现文件复制
-
+//把a.txt复制到文件b.txt中(filecopy.c)
 
