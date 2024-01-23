@@ -13,7 +13,7 @@ int main(){
 	 //printf("aaaaaaa\n");//读了5次，3-3-3-1-0 (hello word)
      int res = read(fdr,buf,sizeof(buf));
      if(res == -1) perror("read"),exit(-1);
-	 if(res == 0) break;
+	 if(res == 0) break;//多读一次 文件尾
      write(fdw,buf,res);
   }
   close(fdr);close(fdw);
