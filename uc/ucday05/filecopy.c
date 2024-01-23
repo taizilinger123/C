@@ -10,6 +10,7 @@ int main(){
   if(fdw == -1) perror("open b"),exit(-1);
   char buf[3] = { };
   while(1){
+	 //printf("aaaaaaa\n");//读了5次，3-3-3-1-0 (hello word)
      int res = read(fdr,buf,sizeof(buf));
      if(res == -1) perror("read"),exit(-1);
 	 if(res == 0) break;
