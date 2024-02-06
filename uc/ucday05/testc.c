@@ -10,12 +10,23 @@ int main(){//对比UC和标C函数 效果
   for(i=0;i<1000000;i++){
     fwrite(&i,4,1,file);
   }
-  fclose(file);*/
+  fclose(file);
   int fd=open("a.txt",O_RDWR|O_CREAT|O_TRUNC,0666);
   if(fd==-1) perror("open"),exit(-1);
   int i;
   for(i=0;i<1000000;i++){
      write(fd,&i,4);
+  }
+  close(fd);*/
+  int fd=open("a.txt",O_RDWR|O_CREAT|O_TRUNC,0666);
+  if(fd==-1) perror("open"),exit(-1);
+  int i;
+  int buf[10000] = { };//缓冲区
+  for(i=0;i<1000000;i++){
+     //write(fd,&i,4);
+	 buf[i%10000] = i;
+	 if((i%10000) == 9999)
+	   write(fd,buf,sizeof(buf));
   }
   close(fd);
 }
@@ -50,5 +61,12 @@ root@test:/home/test/biaoc/C/uc/ucday05# time b
 real	0m2.500s
 user	0m0.204s
 sys	0m2.295s
+root@test:/home/test/biaoc/C/uc/ucday05# gcc  testc.c -oc
+root@test:/home/test/biaoc/C/uc/ucday05# time c
+
+real	0m0.020s
+user	0m0.000s
+sys	0m0.020s
+
 
  */
