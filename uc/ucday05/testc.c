@@ -67,6 +67,4 @@ root@test:/home/test/biaoc/C/uc/ucday05# time c
 real	0m0.020s
 user	0m0.000s
 sys	0m0.020s
-
-
- */
+*/
