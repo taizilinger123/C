@@ -15,4 +15,16 @@ int main(){
   write(fd,"1",1);//覆盖a
   lseek(fd,3,SEEK_SET);write(fd,"2",1);//d
   lseek(fd,2,SEEK_CUR);write(fd,"3",1);//g
+  lseek(fd,-2,SEEK_CUR);write(fd,"4",1);//f
+  lseek(fd,-3,SEEK_END);write(fd,"5",1);//S
+  close(fd);
 }
+/*
+ root@test:/home/test/biaoc/C/uc/ucday06# gcc lseek.c 
+ root@test:/home/test/biaoc/C/uc/ucday06# a.out 
+ 1
+ b
+ 4
+ root@test:/home/test/biaoc/C/uc/ucday06# cat  a.txt 
+ 1bc2e43hijklmnopqr5t
+ */
