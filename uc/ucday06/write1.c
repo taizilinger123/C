@@ -13,9 +13,9 @@ int main(){
    write(fd,"c",1);
    */
    write(fd,"1",1);
-   sleep(10);
+   sleep(4);
    write(fd,"2",1);
-   sleep(5);
+   sleep(3);
    write(fd,"3",1);
    close(fd);
 }
