@@ -4,10 +4,10 @@
 #include <fcntl.h>
 
 int main(){
-    int fd = open("a.txt",O_RDWR);
+    int fd = open("a.txt",O_RDWR/*WRONLY*/);
 	if(fd==-1) perror("open"),exit(-1);
 	struct flock lock;
-	lock.l_type = F_RDLCK;
+	lock.l_type = F_RDLCK;//必须先有读权限
 	lock.l_whence = SEEK_SET;
 	lock.l_start = 0;
 	lock.l_len = 20;
@@ -16,7 +16,7 @@ int main(){
 	if(res==-1) printf("加锁失败\n");
 	else printf("加锁成功\n");
 	sleep(20);
-    close(fd);
+    close(fd);//进程结束自动释放锁
 }
 
 /*
