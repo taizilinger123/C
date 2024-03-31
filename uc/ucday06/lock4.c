@@ -35,7 +35,7 @@ int main(){
  root@test:/home/test/biaoc/C/uc/ucday06# gcc lock4.c -ob
  root@test:/home/test/biaoc/C/uc/ucday06# a
  加锁成功,开始读文件
- 成功读完文件
+ 成功读完文件//a读完b加写锁成功
  程序结束
  root@test:/home/test/biaoc/C/uc/ucday06# b
  加读锁成功
