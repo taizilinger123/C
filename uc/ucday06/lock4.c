@@ -21,7 +21,7 @@ int main(){
 	wlock.l_start = 0;
 	wlock.l_len = 20;
 	wlock.l_pid = -1;
-	res = fcntl(fd,F_SETLK,&wlock);//加锁
+	res = fcntl(fd,F_SETLKW/*F_SETLK*/,&wlock);//加锁
 	if(res==-1) printf("加写锁失败\n");
 	else printf("加写锁成功\n");
     close(fd);
