@@ -69,4 +69,8 @@ type=2
 0,20
 type=0
 l_pid=12939
+root@test:/home/test/biaoc/C/uc/ucday06# man 2  stat
+root@test:/home/test/biaoc/C/uc/ucday06# man time.h
+没有 time.h 的手册页条目
+
  */
