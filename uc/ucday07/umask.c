@@ -4,6 +4,7 @@
 #include <sys/stat.h>
 
 int main(){
+	//系统的权限屏蔽字 002
     int fd = open("b.txt",O_RDWR|O_CREAT,0777);
 	if(fd==-1) perror("open"),exit(-1);
 	struct stat s = {};
