@@ -12,4 +12,5 @@ int main(){
 	fstat(fd,&s);
 	printf("mode=%o\n",s.st_mode & 0777);
 	umask(old);//还原系统屏蔽字
+	//要删除原来的b.txt文件再gcc umask.c  a.out
 }
