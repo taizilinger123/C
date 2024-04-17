@@ -16,7 +16,8 @@ int main(){
    ftruncate(fd,sizeof(struct emp)*3);//设大小 //总线错误 (核心已转储
    void* p = mmap(0,sizeof(struct emp)*3,
 		   PROT_READ|PROT_WRITE,
-		   MAP_SHARED,
+		   //MAP_SHARED,//写入文件，其他进程可读
+		   MAP_PRIVATE,//不真正写入文件，其它进程不可读
 		   fd,0);
    if(p == MAP_FAILED) perror("map"),exit(-1);
    struct emp* pe = p;
