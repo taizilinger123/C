@@ -8,6 +8,7 @@ void print(char* filename){
   //printf("-------------%s\n",filename);
   DIR* dir = opendir(filename);
   if(dir == NULL) return;//不带数据的返回
+  chdir(filename);
   struct dirent* ent;
   while(ent=readdir(dir)){
      if(ent->d_type == 4){//目录
@@ -15,16 +16,17 @@ void print(char* filename){
 		 strcmp("..",ent->d_name)==0)
 		 continue;//如果是.或..,继续下次
 		 printf("[%s]\n",ent->d_name);
-		 char buf[100] = {};
+		 /*char buf[100] = {};
 		 strcpy(buf,filename);
 		 strcat(buf,"/");
 		 strcat(buf,ent->d_name);
-		 print(buf);
-	     //print(ent->d_name);
+		 print(buf);*/
+	     print(ent->d_name);
 	 }else{//文件
 	     printf("%s\n",ent->d_name);
 	 }
   }
+  chdir("..");
 }
 int main(){
   print("../");
