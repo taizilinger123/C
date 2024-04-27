@@ -6,5 +6,8 @@ int main(){
    //参数:1 是命令所在的路径 2 命令  3 选项
    //4 参数  以 NULL 结束
    execl("/bin/ls","ls","-l","../",NULL);
-   printf("over ls\n");
+   //execlp("ls","ls","-l","../",NULL);
+   //execlp可以省略PATH中的路径
+   printf("over ls\n");//不会打印
+   //因为exec系列函数换了新的代码区 
 }
