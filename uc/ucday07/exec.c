@@ -9,5 +9,5 @@ int main(){
    //execlp("ls","ls","-l","../",NULL);
    //execlp可以省略PATH中的路径
    printf("over ls\n");//不会打印
-   //因为exec系列函数换了新的代码区 
+   //因为exec系列函数换了新的代码区,就是换了内存空间,fork和vfork是换了进程 
 }
