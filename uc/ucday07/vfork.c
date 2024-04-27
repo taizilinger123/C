@@ -7,7 +7,7 @@ int main(){
    if(pid==0){//vfork()确保子进程先运行
      sleep(5);
 	 printf("child over\n");
-	 exit(0);
+	 exit(0);//子进程最好用exit(0)确保退出
    }
    printf("father over\n");
 }
