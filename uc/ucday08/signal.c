@@ -41,4 +41,5 @@ pid=2616
 root@test:/home/test/biaoc/C/uc/ucday08# a.out
 pid=2618
 总线错误 (核心已转储)
+kill  -l 可以查看所有的信号
  */
