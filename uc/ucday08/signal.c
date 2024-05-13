@@ -14,3 +14,21 @@ int main(){
    //signal(9,fa);
    while(1);
 }
+
+
+
+/*
+ root@test:/home/test/biaoc/C/uc/ucday08# a.out
+ pid=2369        kill -9 2369
+ ^C捕获了信号2   ctrl+c  取消不了
+ ^C捕获了信号2
+ ^C捕获了信号2
+ ^C捕获了信号2
+ ^\              ctrl+\  取消不了
+ ^C捕获了信号2
+ ^C捕获了信号2
+ ^C捕获了信号2
+ ^C捕获了信号2
+ ^\^\^\^\已杀死
+
+ */
