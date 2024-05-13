@@ -9,7 +9,9 @@ void fa(int signo){//信号值
 int main(){
    printf("pid=%d\n",getpid());
    signal(SIGINT,fa);//改变了2退出信号(ctrl+c) SIGINT(Signal Interrupt)的处理方式
-   //由原先的默认处理  变成了  调用fa函数处理
+   //由原先的默认处理  变成了  调用fa函数处理,
+   //到这里会一直执行下去,直到最后的while(1)函数我们给signal函数
+   //发送ctrl+c退出信号才会执行fa这个函数
    if(signal(SIGQUIT,SIG_IGN)==SIG_ERR)//忽略
 	   perror("signal"),exit(-1);
    signal(9,fa);//无效，9不能改变处理方式
