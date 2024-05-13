@@ -9,7 +9,7 @@ void fa(int signo){//信号值
 int main(){
    printf("pid=%d\n",getpid());
    signal(SIGINT,fa);
-   if(signal(SIGQUIT,SIG_IGN)==SIG_ERR)
+   if(signal(SIGQUIT,SIG_IGN)==SIG_ERR)//忽略
 	   perror("signal"),exit(-1);
    signal(9,fa);//无效，9不能改变处理方式
    while(1);
