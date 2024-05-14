@@ -8,7 +8,7 @@ void fa(int signo){
 }
 int main(){
    signal(SIGINT,fa);//2  ctrl+c
-   signal(SIGQUIT,SIG_IGN); //3 quit
+   signal(SIGQUIT,SIG_IGN); //3 被忽略
    pid_t pid = fork();//子进程照抄父进程的处理
    if(pid == 0){//子进程执行
       printf("child pid=%d\n",getpid());
