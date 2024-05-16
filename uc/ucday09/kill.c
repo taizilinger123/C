@@ -60,5 +60,5 @@ PID TTY          TIME CMD
 2341 pts/8    00:00:00 su
 2342 pts/8    00:00:02 bash
 6731 pts/8    00:00:00 ps
-:32,62left  vi那些行靠左对齐
+:32,62left 再次按enter回车就32到62靠左对齐了  vi那些行靠左对齐
  */
