@@ -61,4 +61,36 @@ PID TTY          TIME CMD
 2342 pts/8    00:00:02 bash
 6731 pts/8    00:00:00 ps
 :32,62left 再次按enter回车就32到62靠左对齐了  vi那些行靠左对齐
+###############################################################
+root@test:/home/test/biaoc/C/uc/ucday09# killall a.out
+root@test:/home/test/biaoc/C/uc/ucday09# ps
+PID TTY          TIME CMD
+2340 pts/8    00:00:00 sudo
+2341 pts/8    00:00:00 su
+2342 pts/8    00:00:03 bash
+9634 pts/8    00:00:00 ps
+root@test:/home/test/biaoc/C/uc/ucday09# gcc kill.c
+root@test:/home/test/biaoc/C/uc/ucday09# a.out
+父进程给子进程发送信号
+捕获了信号2
+pid=9641
+root@test:/home/test/biaoc/C/uc/ucday09# a.out
+父进程给子进程发送信号
+捕获了信号2
+pid=9643
+root@test:/home/test/biaoc/C/uc/ucday09# ps
+PID TTY          TIME CMD
+2340 pts/8    00:00:00 sudo
+2341 pts/8    00:00:00 su
+2342 pts/8    00:00:03 bash
+9641 pts/8    00:00:05 a.out
+9643 pts/8    00:00:02 a.out
+9644 pts/8    00:00:00 ps
+root@test:/home/test/biaoc/C/uc/ucday09# killall a.out
+root@test:/home/test/biaoc/C/uc/ucday09# ps
+PID TTY          TIME CMD
+2340 pts/8    00:00:00 sudo
+2341 pts/8    00:00:00 su
+2342 pts/8    00:00:03 bash
+9646 pts/8    00:00:00 ps
  */
