@@ -78,6 +78,9 @@ root@test:/home/test/biaoc/C/uc/ucday09# a.out
 父进程给子进程发送信号
 捕获了信号2
 pid=9643
+root@test:/home/test/biaoc/C/uc/ucday09# kill -2 9641
+root@test:/home/test/biaoc/C/uc/ucday09# kill -2 9641
+root@test:/home/test/biaoc/C/uc/ucday09# kill -2 9641
 root@test:/home/test/biaoc/C/uc/ucday09# ps
 PID TTY          TIME CMD
 2340 pts/8    00:00:00 sudo
