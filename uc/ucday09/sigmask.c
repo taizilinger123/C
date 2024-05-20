@@ -17,6 +17,14 @@ int main(){
 	sigaddset(&set,SIGQUIT); sigaddset(&set,50);
 	sigprocmask(SIG_SETMASK,&set,&old);
 	sleep(15);
+	sigset_t pend;//获取来过的被屏蔽的信号
+	sigpending(&pend);
+	if(sigismember(&pend,SIGINT)){
+	  printf("信号SIGINT来过\n");
+	}
+	if(sigismember(&pend,SIGQUIT)){
+	  printf("信号SIGQUIT来过\n");
+	}
 	printf("关键代码执行完毕，解除信号屏蔽\n");
 	sigprocmask(SIG_SETMASK,&old,0);
 }
@@ -37,4 +45,19 @@ int main(){
  root@test:/home/test/biaoc/C/uc/ucday09# kill -2 11934
  root@test:/home/test/biaoc/C/uc/ucday09# kill -2 11934
  root@test:/home/test/biaoc/C/uc/ucday09# kill -50 11934
+###################################################################
+root@test:/home/test/biaoc/C/uc/ucday09# gcc sigmask.c 
+t@test:/home/test/biaoc/C/uc/ucday09# a.out 
+pid=12208
+执行普通代码，没有屏蔽信号
+捕获了信号2
+模拟关键代码，开始信号屏蔽
+信号SIGINT来过
+关键代码执行完毕，解除信号屏蔽
+捕获了信号2
+root@test:/home/test/biaoc/C/uc/ucday09# kill -2 12208
+root@test:/home/test/biaoc/C/uc/ucday09# kill -2 12208
+root@test:/home/test/biaoc/C/uc/ucday09# kill -2 12208
+root@test:/home/test/biaoc/C/uc/ucday09# kill -2 12208
+root@test:/home/test/biaoc/C/uc/ucday09# kill -2 12208
  */
