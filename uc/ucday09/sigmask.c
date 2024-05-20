@@ -40,11 +40,11 @@ int main(){
  捕获了信号50
  捕获了信号3
  捕获了信号2
+ root@test:/home/test/biaoc/C/uc/ucday09# kill -3 11934 //模拟发信号3
  root@test:/home/test/biaoc/C/uc/ucday09# kill -3 11934
- root@test:/home/test/biaoc/C/uc/ucday09# kill -3 11934
+ root@test:/home/test/biaoc/C/uc/ucday09# kill -2 11934 //模拟发信号2
  root@test:/home/test/biaoc/C/uc/ucday09# kill -2 11934
- root@test:/home/test/biaoc/C/uc/ucday09# kill -2 11934
- root@test:/home/test/biaoc/C/uc/ucday09# kill -50 11934
+ root@test:/home/test/biaoc/C/uc/ucday09# kill -50 11934 //模拟发信号50
 ###################################################################
 root@test:/home/test/biaoc/C/uc/ucday09# gcc sigmask.c 
 t@test:/home/test/biaoc/C/uc/ucday09# a.out 
