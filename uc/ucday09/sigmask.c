@@ -7,7 +7,7 @@ void fa(int signo){
 }
 int main(){
     signal(SIGINT,fa);signal(SIGQUIT,fa);//2,3不可靠信号(不支持排队),会丢失
-	signal(50,fa);//可靠信号(支持排队)，不会丢失
+	signal(50,fa);//可靠信号(支持排队,排队是针对相同信号来说的)，不会丢失
 	printf("pid=%d\n",getpid());
 	printf("执行普通代码，没有屏蔽信号\n");
 	sleep(20);//会被第一个发来的信号中断
