@@ -21,7 +21,7 @@ sigaction.c:6:3: warning: implicit declaration of function ‘sleep’ [-Wimplic
 sleep(5);
 ^
 root@test:/home/test/biaoc/C/uc/ucday09# a.out
-^C捕获了信号2
+^C捕获了信号2   //ctrl+c
 ^C^C^C^C^C^C^C^C^C^C^C^\捕获了信号2
-^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\退出 (核心已转储)
+^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\^\退出 (核心已转储)  //ctrl+\
  */
