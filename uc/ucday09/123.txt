@@ -1,0 +1,29 @@
+root@test:/home/test/biaoc/C/uc/ucday09# mkfifo  a.pipe
+root@test:/home/test/biaoc/C/uc/ucday09# touch b.pipe
+root@test:/home/test/biaoc/C/uc/ucday09# ls -l 
+总用量 84
+-rw-r--r-- 1 root root   633 5月  19 12:27 alarm.c
+-rwxr-xr-x 1 root root  8736 5月  22 16:30 a.out
+prw-r--r-- 1 root root     0 5月  24 10:53 a.pipe
+-rw-r--r-- 1 root root     0 5月  24 10:53 b.pipe
+-rw-r--r-- 1 root root   452 5月  22 17:16 itimer.c
+-rw-r--r-- 1 root root  3005 5月  20 00:25 kill.c
+-rw-r--r-- 1 root root   666 5月  17 13:42 killtest2.c
+-rw-r--r-- 1 root root   962 5月  16 15:05 killtest.c
+-rwxr-xr-x 1 root root 28392 5月  17 11:16 license
+-rw-r--r-- 1 root root  1440 5月  18 19:02 license.cpp
+-rw-r--r-- 1 root root  1015 5月  22 10:14 sigaction.c
+-rw-r--r-- 1 root root   908 5月  22 10:37 siginfo.c
+-rw-r--r-- 1 root root  2308 5月  20 16:04 sigmask.c
+-rw-r--r-- 1 root root   609 5月  22 10:59 sigqueue.c
+-rw-r--r-- 1 root root   515 5月  19 23:58 sigset.c
+root@test:/home/test/biaoc/C/uc/ucday09# echo hello >b.pipe
+root@test:/home/test/biaoc/C/uc/ucday09# cat b.pipe
+hello
+root@test:/home/test/biaoc/C/uc/ucday09# echo hello >a.pipe
+#开一个新的终端
+root@test:/home/test/biaoc/C/uc/ucday09# cat a.pipe
+hello
+root@test:/home/test/biaoc/C/uc/ucday09# ls -l a.pipe
+prw-r--r-- 1 root root 0 5月  24 10:54 a.pipe   #大小为0
+
