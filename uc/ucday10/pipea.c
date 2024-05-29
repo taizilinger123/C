@@ -6,6 +6,7 @@
 int main(){
   int fd = open("a.pipe",/*O_RDWR*/O_WRONLY);
   //O_RDWR管道文件不要用读写，会出问题，要用只读或者只写
+  //WRONLY是只写
   if(fd==-1) perror("open"),exit(-1);
   int i;
   for(i=0;i<100;i++){
