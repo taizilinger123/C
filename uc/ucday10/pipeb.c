@@ -16,7 +16,9 @@ int main(){
 }
 /*
  root@test:/home/test/biaoc/C/uc/ucday10# gcc pipea.c -oa
- root@test:/home/test/biaoc/C/uc/ucday10# a #发送
+ root@test:/home/test/biaoc/C/uc/ucday10# a \\发送
+ \\再新开一个终端
+ cd /home/test/biaoc/C/uc/ucday10
  root@test:/home/test/biaoc/C/uc/ucday10# gcc pipeb.c -ob
- root@test:/home/test/biaoc/C/uc/ucday10# b #接受
+ root@test:/home/test/biaoc/C/uc/ucday10# b \\接受
  */
