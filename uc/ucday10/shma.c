@@ -15,7 +15,7 @@ int main(){
   int* pi = p;//4 使用
   *pi = 12345;//把数据放入共享内存
   shmdt(p);//5 脱接
-}
+}//练习:写shmb.c 实现把12345 从共享内存中取出
 
 /*
  root@test:/home/test/biaoc/C/uc/ucday10# vi  shma.c
