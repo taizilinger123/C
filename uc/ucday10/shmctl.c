@@ -18,7 +18,7 @@ int main(){
    ds.shm_perm.mode = 0640;//权限  可以改
    ds.shm_segsz = 400;//大小 没有效果
    shmctl(shmid,IPC_SET,&ds);
-   //shmctl(shmid,IPC_RMID,0);//删除
+   shmctl(shmid,IPC_RMID,0);//删除
 }
 /*
  root@test:/home/test/biaoc/C/uc/ucday10# ipcs -m 
