@@ -27,5 +27,11 @@ root@test:/home/test/biaoc/C/uc/ucday10# a
 发送成功
  root@test:/home/test/biaoc/C/uc/ucday10# b
  收到9字节的数据:hello msg
+ root@test:/home/test/biaoc/C/uc/ucday10# ipcs -q
+
+ --------- 消息队列 -----------
+ 键        msqid      拥有者  权限     已用字节数 消息      
+ 0x64011a25 0          root       666        0            0  
+#再查消息变为0，数据都被取走了
 
  */
