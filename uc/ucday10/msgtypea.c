@@ -14,6 +14,7 @@ int main(){
   if(msgid == -1) perror("msgget"),exit(-1);
   struct MSG msg1,msg2;
   msg1.mtype = 1;strcpy(msg1.buf,"guanyu");
+  //strcpy(msg1.buf,"guanyu");#include <string.h>
   msg2.mtype = 2;strcpy(msg2.buf,"zhangfei");
   msgsnd(msgid,&msg1,sizeof(msg1.buf),0);
   msgsnd(msgid,&msg2,sizeof(msg2.buf),0);
