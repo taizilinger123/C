@@ -18,15 +18,35 @@ int main(){
    //获取到消息队列之后，开始接受消息
    while(1){
        struct Msg msg;//存储消息信息的结构体
-	   struct Account accMove,accResult;//存储账号
-	   //首先从客户那里收取消息队列1的信息 msgr
-	   if(msgrcv(msgid1,&msg,sizeof(msg.acc),0,0))
+	   struct Account accMove,accResult;//存储账户信息
+	   //首先从客户那里收取消息队列1的信息 msgrcv 函数 
+	   if(msgrcv(msgid1,&msg,sizeof(msg.acc),0,0) <=0)
 		   break;
    }
-   //如果接受到了消息，根据消息的不同类型进行
+   //如果接受到了消息，根据消息的不同类型进行不同的
    if(msg.mtype == M_OPEN){//如果类型是开户
       int  id = generator_id();
 	  accMove = msg.acc;
 	  accMove.id = id;
+	  if(createUser(accMove)==-1){
+	     printf("开户失败");
+		 msg.mtype = M_FAILED;//将消息类型置为失败
+	  }
+	  else{
+	     printf("开户成功");
+		 msg.mtype = M_SUCCESS;
+	  }
+	  msgsnd(msgid2,&msg,sizeof(msg.acc));
+	  //执行开户的操作
+	  //给用户分配账号，将用户信息记
    }
+   //最后把消息发过去，这时候消息的类型
+   //或者是M_FAILED
+   else if(msg.mtype == M_DESTROY){}
+   else if(msg.mtype == M_SAVE){}
+   else if(msg.mtype == M_TAKE){}
+   else if(msg.mtype == M_QUERY){}
+   else if(msg.mtype == M_TRANSF){}
+  }
+  return 0;
 }
