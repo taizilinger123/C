@@ -36,3 +36,20 @@ int generator_id(){
    close(fd);
    return x;
 }
+
+//将一个新账号  存到文件中
+int createUser(struct Account acc){
+   char filename[20]={};
+   sprintf(filename,"%d.dat",acc.id);//为每个账户生成一个文件
+   int fd = open(filename,O_WRONLY|O_CREAT|O_EXCL|0666);
+   if(fd == -1){
+     perror("创建账户文件失败");
+	 return -1;
+   }
+   if(write(fd,&acc,sizeof(acc))<0){
+     return -1;
+   }
+   close(fd);
+   printf("创建用户成功\n");
+   return 0;
+}
