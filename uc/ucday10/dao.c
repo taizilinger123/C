@@ -34,4 +34,5 @@ int generator_id(){
    //再将x的值写到文件中，覆盖原来的x
    write(fd,&x,sizeof(x));
    close(fd);
+   return x;
 }
