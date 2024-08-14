@@ -20,4 +20,5 @@ int main(){
 /*
  gcc socketb.c -ob
  b
+ rm  a.sock 
  */
