@@ -16,14 +16,16 @@ int main(){
   if(res==-1) perror("bind"),exit(-1);
   printf("bind ok\n");
   listen(sockfd,100);//4 监听
-  struct sockaddr_in from;//用于存客户端地址
-  socklen_t len = sizeof(from);//传入传出参数
-  int fd = accept(sockfd,(struct sockaddr*)&from,&len);
-  printf("%s连接了服务器\n",inet_ntoa(from.sin_addr));//十六 转 点分十进制
-  char buf[100] = {};
-  read(fd,buf,100);
-  printf("%s\n",buf);
-  write(fd,"welcome",7);
-  close(fd); 
-  close(sockfd);
-}
+  while(1){
+      struct sockaddr_in from;//用于存客户端地址
+      socklen_t len = sizeof(from);//传入传出参数
+      int fd = accept(sockfd,(struct sockaddr*)&from,&len);
+      printf("%s连接了服务器\n",inet_ntoa(from.sin_addr));//十六 转 点分十进制
+      char buf[100] = {};
+      read(fd,buf,100);
+      printf("%s\n",buf);
+      write(fd,"welcome",7);
+      close(fd); 
+  }
+  //close(sockfd);//在这里执行不到
+}//练习: 用信号2实现关闭sockfd
