@@ -20,6 +20,9 @@ int main(){
   addr.sin_family = AF_INET;
   addr.sin_port = htons(2222);
   addr.sin_addr.s_addr = inet_addr("10.0.1.128");
+  //解决地址已经使用问题的代码
+  int reuse = 1;
+  setsockopt(sockfd,SOL_SOCKET,SO_REUSEADDR,&reuse,sizeof(reuse));
   int res = bind(sockfd,(struct sockaddr*)&addr,sizeof(addr));
   if(res==-1) perror("bind"),exit(-1);
   printf("bind ok\n");
