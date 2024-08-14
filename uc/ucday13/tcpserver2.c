@@ -4,9 +4,17 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-
+#include <signal.h>
+int sockfd;
+void fa(int signo){
+   printf("关闭服务器\n");
+   close(sockfd);
+   exit(0);
+}
 int main(){
-  int sockfd = socket(AF_INET,SOCK_STREAM,0);
+  printf("按ctrl+C退出服务器\n");
+  signal(SIGINT,fa);
+  sockfd = socket(AF_INET,SOCK_STREAM,0);
   if(sockfd == -1) perror("socket"),exit(-1);
   struct sockaddr_in addr;
   addr.sin_family = AF_INET;
