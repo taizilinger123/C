@@ -20,4 +20,4 @@ int main(){
    read(sockfd,buf,100);
    printf("%s\n",buf);
    close(sockfd);
-}//练习：socketd.c实现，发一个hello过来
+}
