@@ -33,9 +33,13 @@ int main(){
       int fd = accept(sockfd,(struct sockaddr*)&from,&len);
       printf("%s连接了服务器\n",inet_ntoa(from.sin_addr));//十六 转 点分十进制
       char buf[100] = {};
-      read(fd,buf,100);
-      printf("%s\n",buf);
-      write(fd,"welcome",7);
+	  while(1){
+         read(fd,buf,100);
+         printf("client:%s\n",buf);
+		 if(strcmp("bye",buf)==0) break;
+         write(fd,"buf",strlen(buf));
+		 memset(buf,0,sizeof(buf));
+	  }
       close(fd); 
   }
   //close(sockfd);//在这里执行不到
