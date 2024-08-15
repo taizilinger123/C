@@ -20,6 +20,6 @@ int main(){
 }//练习：把socketb.c写一下，改bind和读写数据
 //写完 运行，完成数据的交互
 /* 
- gcc socketb.c -oa
+ gcc socketa.c -oa
  a
  */
