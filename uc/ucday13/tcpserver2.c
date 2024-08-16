@@ -37,7 +37,7 @@ int main(){
          read(fd,buf,100);
          printf("client:%s\n",buf);
 		 if(strcmp("bye",buf)==0) break;
-         write(fd,"buf",strlen(buf));
+         write(fd,buf,strlen(buf));
 		 memset(buf,0,sizeof(buf));
 	  }
       close(fd); 
