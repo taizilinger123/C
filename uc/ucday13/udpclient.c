@@ -13,5 +13,8 @@ int main(){
    addr.sin_port = htons(2222);//本机转网络格式htons=host to network short
    addr.sin_addr.s_addr = inet_addr("10.0.1.128");//转换IP的函数，点分十进制转换为十六进制
    sendto(sockfd,"hello",5,0,(struct sockaddr*)&addr,sizeof(addr));
+   char buf[100] = {};
+   read(sockfd,buf,100);
+   printf("%s\n",buf);
    close(sockfd);
 }
