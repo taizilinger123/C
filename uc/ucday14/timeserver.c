@@ -7,7 +7,14 @@
 #include <time.h>
 #include <signal.h>
 int sockfd;
+void fa(int signo){
+   close(sockfd);
+   printf("服务器已经关闭\n");
+   exit(0);
+}
 int main(){
+   printf("按CTRL+C退出\n");
+   signal(SIGINT,fa);
    sockfd = socket(AF_INET,SOCK_DGRAM,0);
    if(sockfd == -1) perror("socket"),exit(-1);
    struct sockaddr_in addr;
