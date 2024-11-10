@@ -18,33 +18,33 @@ int main(){
  root@test:/home/test/biaoc/C/uc/ucday14# gcc pthread.c -lpthread
  pthread.c: In function ‘main’:
  pthread.c:10:11: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
-     printf("size=%d\n",sizeof(id));
-	            ^
-				pthread.c:14:11: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 2 has type ‘pthread_t {aka long unsigned int}’ [-Wformat=]
-				    printf("id=%u,id2=%u\n",id,id2);
-					           ^
-							   pthread.c:14:11: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 3 has type ‘pthread_t {aka long unsigned int}’ [-Wformat=]
-							   pthread.c:15:4: warning: implicit declaration of function ‘sleep’ [-Wimplicit-function-declaration]
-							       sleep(1);
-								       ^
-									   root@test:/home/test/biaoc/C/uc/ucday14# a.out
-									   size=8
-									   id=4276532992,id2=4284864256
-									   我是一个线程
-									   root@test:/home/test/biaoc/C/uc/ucday14# gcc pthread.c -pthread
-									   pthread.c: In function ‘main’:
-									   pthread.c:10:11: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
-									       printf("size=%d\n",sizeof(id));
-										              ^
-													  pthread.c:14:11: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 2 has type ‘pthread_t {aka long unsigned int}’ [-Wformat=]
-													      printf("id=%u,id2=%u\n",id,id2);
-														             ^
-																	 pthread.c:14:11: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 3 has type ‘pthread_t {aka long unsigned int}’ [-Wformat=]
-																	 pthread.c:15:4: warning: implicit declaration of function ‘sleep’ [-Wimplicit-function-declaration]
-																	     sleep(1);
-																		     ^
-																			 root@test:/home/test/biaoc/C/uc/ucday14# a.out
-																			 size=8
-																			 id=461752064,id2=470083328
-																			 我是一个线程
+printf("size=%d\n",sizeof(id));
+^
+pthread.c:14:11: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 2 has type ‘pthread_t {aka long unsigned int}’ [-Wformat=]
+printf("id=%u,id2=%u\n",id,id2);
+^
+pthread.c:14:11: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 3 has type ‘pthread_t {aka long unsigned int}’ [-Wformat=]
+pthread.c:15:4: warning: implicit declaration of function ‘sleep’ [-Wimplicit-function-declaration]
+sleep(1);
+^
+root@test:/home/test/biaoc/C/uc/ucday14# a.out
+size=8
+id=4276532992,id2=4284864256
+我是一个线程
+root@test:/home/test/biaoc/C/uc/ucday14# gcc pthread.c -pthread
+pthread.c: In function ‘main’:
+pthread.c:10:11: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+printf("size=%d\n",sizeof(id));
+^
+pthread.c:14:11: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 2 has type ‘pthread_t {aka long unsigned int}’ [-Wformat=]
+printf("id=%u,id2=%u\n",id,id2);
+^
+pthread.c:14:11: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 3 has type ‘pthread_t {aka long unsigned int}’ [-Wformat=]
+pthread.c:15:4: warning: implicit declaration of function ‘sleep’ [-Wimplicit-function-declaration]
+sleep(1);
+^
+root@test:/home/test/biaoc/C/uc/ucday14# a.out
+size=8
+id=461752064,id2=470083328
+我是一个线程
  */
