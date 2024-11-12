@@ -19,4 +19,5 @@ int main(){
   pthread_create(&id,0,task2,pi);
   //free(pi);//如果使用堆内存，一定保证线程结束后再释放内存
   pthread_join(id,0);
+  free(pi); //正确的位置
 }
