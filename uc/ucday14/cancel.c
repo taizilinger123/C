@@ -23,3 +23,13 @@ int main(){
   pthread_join(id1,0);
   pthread_join(id2,0);
 }
+
+/*
+ *(pthread_t*)p
+指针前面加个*就是得到指针的具体的东西
+int x = 10;
+int* p = &x;  // p 是一个指向 x 的指针，保存了 x 的地址
+
+printf("地址 p 是: %p\n", (void*)p);    // 输出指针 p 的值（即 x 的地址）
+printf("值 *p 是: %d\n", *p);          // 输出 p 指向的内容，即 x 的值""))"")
+ */
