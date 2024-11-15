@@ -3,12 +3,16 @@
 
 char* data[5];//最多存5个人名,这里是在BSS段，主函数执行之前会清零,是空指针不是野指针
 int size = 0;//人数，数组下标
+pthread_mutex_t lock;//=PTHREAD_MUTEX_INITIALIZER;//1 声明
 void* task(void* p){
-  data[size] = p;
+  pthread_mutex_lock(&lock);//3 上锁
+  data[size] = p;//4 执行代码
   sleep(1);
   size++;
+  pthread_mutex_unlock(&lock);//5 解锁
 } 
 int main(){
+  pthread_mutex_init(&lock,0);//2 初始化
   data[size] = "liubei";
   size++;
   pthread_t id1,id2;
@@ -16,6 +20,7 @@ int main(){
   pthread_create(&id2,0,task,(void*)"zhangfei");
   pthread_join(id1,0);
   pthread_join(id2,0);
+  pthread_mutex_destroy(&lock);//6 销毁
   int i;
   for(i=0;i<size;i++){
 	 printf("%p\n",data[i]);
@@ -24,6 +29,18 @@ int main(){
 }
 
 /*
+root@test:/home/test/biaoc/C/uc/ucday14# gcc mutex.c -pthread
+mutex.c: In function ‘task’:
+mutex.c:10:3: warning: implicit declaration of function ‘sleep’ [-Wimplicit-function-declaration]
+sleep(1);
+^
+root@test:/home/test/biaoc/C/uc/ucday14# a.out
+0x400ad4
+liubei
+0x400adb
+guanyu
+0x400ae2
+zhangfei
  data[size] 这种写法其实并不复杂，它是数组的常见用法。让我们一步步理解它：
  
  数组的概念：data 是一个数组，定义为 char* data[5];。这意味着 data 数组最多可以存储 5 个元素，每个元素的类型是 char*，即一个字符串的指针。这种数组可以存储多个字符串的指针。
